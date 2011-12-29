@@ -86,3 +86,7 @@ zh_CN.GBK GBK
 zh_CN.GB2312 GB2312
 " >> /var/lib/locales/supported.d/local
 sudo dpkg-reconfigure –force locales
+
+echo "14. Install Beyond compare"
+sudo dpkg -i ~/Backup/bcompare-3.3.3.14128_amd64.deb -y > /dev/null
+
