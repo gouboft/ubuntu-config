@@ -1,0 +1,9 @@
+Host bearr
+	Hostname bear
+	Port 29418
+	User bgou
+
+Host venusr
+	Hostname venus
+	Port 29418
+	User bgou
