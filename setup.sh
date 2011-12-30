@@ -1,24 +1,30 @@
 #!/bin/bash
 
-echo "1. Install JDK 1.6"
+
 if [ ! -e /usr/lib/jvm ]; then
-	chmod +x ~/Downloads/jdk-6u30-linux-x64.bin
-	cd ~/Downloads
-	./jdk-6u30-linux-x64.bin
+    echo "1. Install JDK 1.6"
+    sudo mkdir /usr/lib/jvm
+    if [ ! -e /usr/lib/jvm/jdk1.6.0.30 ]; then
+	cd ~/Backup
+	tar -zxvf ~/Backup/jdk-6u30-linux-x64.tar.gz	
 	sudo mkdir /usr/lib/jvm
 	sudo mv jdk1.6.0_30 /usr/lib/jvm/
 	sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.6.0_30/bin/java 200
 	sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.6.0_30/bin/javac 200
-fi
+    fi
 
-echo "2. Install JDK 1.7"
-if [  -e /usr/lib/jvm/jdk1.7.0_02 ]; then
-	tar -zxvf ~/Downloads/jdk-7u2-linux-x64.tar.gz
+
+    echo "2. Install JDK 1.7"
+    if [ ! -e /usr/lib/jvm/jdk1.7.0_02 ]; then
+	cd ~/Backup
+	tar -zxvf ~/Backup/jdk-7u2-linux-x64.tar.gz
 	sudo mkdir /usr/lib/jvm
 	sudo mv jdk1.7.0_02/ /usr/lib/jvm/
-	sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_02/bin/java 300
-	sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_02/bin/javac 300
+	sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_02/bin/java 100
+	sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_02/bin/javac 100
+    fi
 fi
+
 
 # For Android Compile
 echo "3. Install android compile tools"
@@ -90,3 +96,6 @@ sudo dpkg-reconfigure –force locales
 echo "14. Install Beyond compare"
 sudo dpkg -i ~/Backup/bcompare-3.3.3.14128_amd64.deb -y > /dev/null
 
+echo "15. Copy all tools to ~/bin "
+mkdir ~/bin
+cp -rf bin/* ~/bin
