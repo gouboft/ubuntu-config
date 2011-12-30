@@ -7,7 +7,6 @@ if [ ! -e /usr/lib/jvm ]; then
     if [ ! -e /usr/lib/jvm/jdk1.6.0.30 ]; then
 	cd ~/Backup
 	tar -zxvf ~/Backup/jdk-6u30-linux-x64.tar.gz	
-	sudo mkdir /usr/lib/jvm
 	sudo mv jdk1.6.0_30 /usr/lib/jvm/
 	sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.6.0_30/bin/java 200
 	sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.6.0_30/bin/javac 200
@@ -18,7 +17,6 @@ if [ ! -e /usr/lib/jvm ]; then
     if [ ! -e /usr/lib/jvm/jdk1.7.0_02 ]; then
 	cd ~/Backup
 	tar -zxvf ~/Backup/jdk-7u2-linux-x64.tar.gz
-	sudo mkdir /usr/lib/jvm
 	sudo mv jdk1.7.0_02/ /usr/lib/jvm/
 	sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_02/bin/java 100
 	sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_02/bin/javac 100
@@ -94,10 +92,11 @@ sudo chmod 644 /var/lib/locales/supported.d/local
 sudo dpkg-reconfigure -force locales > /dev/null
 
 echo "14. Install Beyond compare"
-sudo dpkg -i ~/Backup/bcompare-3.3.3.14128_amd64.deb  > /dev/null
+sudo dpkg -i ~/Backup/bcompare-*.deb  > /dev/null
 
 echo "15. Copy all tools to ~/bin "
 cp -rf ~/Backup/config/bin/ ~/bin
 cp -rf ~/Backup/config/rc ~/.rc
 ln -sf ~/.rc/bashrc ~/.bashrc > /dev/null
 cp -rf ~/Backup/config/ssh ~/.ssh
+sh .rc/install.sh > /dev/null
