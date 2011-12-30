@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/bash
 
 
 if [ ! -e /usr/lib/jvm ]; then
@@ -54,7 +54,7 @@ if [ ! -e .vim/vimrc ]; then
     git clone https://gouboft@github.com/gouboft/vim-config.git
     mv vim-config .vim
 fi
-ln -s .vim/vimrc .vimrc
+ln -sf .vim/vimrc .vimrc
 
 echo "6. Install Thunderbird"
 sudo apt-get install thunderbird thunderbird-locale-zh-cn thunderbird-locale-zh-tw thunderbird-locale-ko thunderbird-locale-ja -y > /dev/null
@@ -62,7 +62,7 @@ sudo apt-get install thunderbird thunderbird-locale-zh-cn thunderbird-locale-zh-
 echo "7. Install filezilla"
 sudo apt-get install filezilla -y > /dev/null
 
-echo "8. Instal archive tools"
+echo "8. Install archive tools"
 sudo apt-get install unzip zip rar unrar p7zip -y > /dev/null
 sudo apt-get install convmv -y > /dev/null
 
@@ -87,15 +87,17 @@ im-switch -s fcitx -z default
 echo "13. Set some misc"
 sudo apt-get install tree -y > /dev/null
 # Set Ubuntu support Chinese Characters
-sudo echo "
-zh_CN.GBK GBK
-zh_CN.GB2312 GB2312
-" >> /var/lib/locales/supported.d/local
-sudo dpkg-reconfigure –force locales
+sudo chmod 666 /var/lib/locales/supported.d/local
+sudo echo "zh_CN.GBK GBK" >> /var/lib/locales/supported.d/local
+sudo echo "zh_CN.GB2312 GB2312" >> /var/lib/locales/supported.d/local
+sudo chmod 644 /var/lib/locales/supported.d/local
+sudo dpkg-reconfigure -force locales > /dev/null
 
 echo "14. Install Beyond compare"
-sudo dpkg -i ~/Backup/bcompare-3.3.3.14128_amd64.deb -y > /dev/null
+sudo dpkg -i ~/Backup/bcompare-3.3.3.14128_amd64.deb  > /dev/null
 
 echo "15. Copy all tools to ~/bin "
-mkdir ~/bin
-cp -rf bin/* ~/bin
+cp -rf ~/Backup/config/bin/ ~/bin
+cp -rf ~/Backup/config/rc ~/.rc
+ln -sf ~/.rc/bashrc ~/.bashrc > /dev/null
+cp -rf ~/Backup/config/ssh ~/.ssh
