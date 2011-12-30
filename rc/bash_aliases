@@ -1,0 +1,74 @@
+# some more aliases
+# for short alias
+alias s='cd ~/Source'
+alias D='cd ~/Downloads'
+alias d='cd ~/Desktop'
+
+alias aa='cd /home/link/Source/allwinner/ics/android4.0'
+alias aad='cd /home/link/Source/allwinner/ics/android4.0/device/softwinner'
+alias aao='cd /home/link/Source/allwinner/ics/android4.0/out/target/product'
+alias ak='cd /home/link/Source/allwinner/ics/android4.0/vendor/softwinner/linux-3.0'
+alias akd='cd /home/link/Source/allwinner/ics/android4.0/vendor/softwinner/linux-3.0/drivers'
+
+
+alias gp='grep -nsr'
+alias emd='cd ~/.emacs.d/emacs-config'
+alias fd='find . -name' 
+alias cp='cp -v'
+alias mv='mv -v'
+alias LS='ls'
+alias b='cd ..'
+alias f='cd -'
+alias cd1='cd ..'
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+alias cd5='cd ../../../../..'
+alias cd6='cd ../../../../../..'
+alias cd7='cd ../../../../../../..'
+alias cd8='cd ../../../../../../../..'
+alias CD='cd'
+
+
+# for emacs
+alias em='emacsclient'
+alias emnw='emacs -nw'
+
+#alias for command
+alias um='umount /media/GOUBO'
+alias du='du -sh'
+
+# set my environment
+export d=~/Desktop
+export D=~/Downloads
+
+export ao=~/Source/amlogic/nvidia/out/target/product/b04ref
+export aos=~/Source/amlogic/nvidia/out/target/product/b04ref/system
+
+#set java environment
+export JAVA_HOME=/usr/lib/jvm/java-6-sun-1.6.0.26
+export JRE_HOME=/usr/lib/jvm/java-6-sun-1.6.0.26/jre
+export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+
+# Add toolchain for compile
+export PATH=/opt/toolchain/arm-eabi-4.5.0/bin:$PATH
+
+# Add mysql path
+export PATH=/usr/local/mysql/bin:$PATH
+
+# My function
+function grp()
+{
+	grep -nsr $@ .
+}
+
+function cl()
+{
+	cd $@ && ls
+}
+
+# Add Java Path
+export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_30
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$JAVA_HOME/bin:$PATH
