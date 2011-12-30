@@ -1,8 +1,0 @@
-This file is only used to make sure you use the rm command in ~, like this:
-$ pwd
-/home/link
-$ rm -r *
-# or
-$ rm -r .
-
-If you use the command, Are you sure you are not crazy? :)
