@@ -94,9 +94,18 @@ sudo dpkg-reconfigure -force locales > /dev/null
 echo "14. Install Beyond compare"
 sudo dpkg -i ~/Backup/bcompare-*.deb  > /dev/null
 
-echo "15. Copy all tools to ~/bin "
-cp -rf ~/Backup/config/bin/ ~/bin
-cp -rf ~/Backup/config/rc ~/.rc
-ln -sf ~/.rc/bashrc ~/.bashrc > /dev/null
-cp -rf ~/Backup/config/ssh ~/.ssh
-sh .rc/install.sh > /dev/null
+echo "15. Copy all config file"
+if [ ! -e ~/bin/setup.sh ]; then
+    cp -rf ~/Backup/config/bin/ ~/bin
+fi
+if [ ! -e ~/.rc/gitconfig ]; then
+    cp -rf ~/Backup/config/rc ~/.rc
+    ln -sf ~/.rc/bashrc ~/.bashrc > /dev/null
+fi
+if [ ! -e ~/.ssh/configs ]; then
+    cp -rf ~/Backup/config/ssh ~/.ssh
+    .rc/install.sh > /dev/null
+fi
+if [ -e ~/.config/fcitx ]; then
+    cp -rf ~/Backup/config/fcitx/* ~/.config/fcitx
+fi  
