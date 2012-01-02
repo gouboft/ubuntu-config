@@ -28,7 +28,7 @@ fi
 echo "3. Install android compile tools"
 sudo apt-get install gitk git-core gnupg flex bison gperf build-essential \
   zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
-  x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev \
+  x11proto-core-dev libx11-dev lib32readline-dev lib32z-dev \
   libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown \
   libxml2-utils xsltproc -y > /dev/null
 
@@ -48,7 +48,7 @@ echo "5. Install Vim"
 cd ~
 sudo apt-get install vim exuberant-ctags -y > /dev/null
 if [ ! -e .vim/vimrc ]; then
-   # rm -rf .vim/ .vimrc
+    rm -rf .vim/ .vimrc
     git clone https://gouboft@github.com/gouboft/vim-config.git
     mv vim-config .vim
 fi
@@ -89,7 +89,7 @@ sudo chmod 666 /var/lib/locales/supported.d/local
 sudo echo "zh_CN.GBK GBK" >> /var/lib/locales/supported.d/local
 sudo echo "zh_CN.GB2312 GB2312" >> /var/lib/locales/supported.d/local
 sudo chmod 644 /var/lib/locales/supported.d/local
-sudo dpkg-reconfigure -force locales > /dev/null
+sudo dpkg-reconfigure --force locales > /dev/null
 
 echo "14. Install Beyond compare"
 sudo dpkg -i ~/Backup/bcompare-*.deb  > /dev/null
@@ -107,5 +107,5 @@ if [ ! -e ~/.ssh/configs ]; then
     .rc/install.sh > /dev/null
 fi
 if [ -e ~/.config/fcitx ]; then
-    cp -rf ~/Backup/config/fcitx/* ~/.config/fcitx
+    cp -rf ~/Backup/config/fcitx ~/.config
 fi  
