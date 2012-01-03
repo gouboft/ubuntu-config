@@ -26,11 +26,13 @@ fi
 
 # For Android Compile
 echo "3. Install android compile tools"
-sudo apt-get install gitk git-core gnupg flex bison gperf build-essential \
+sudo apt-get Install git -y > /dev/null
+sudo apt-get install git-core gnupg flex bison gperf build-essential \
   zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
   x11proto-core-dev libx11-dev lib32readline-dev lib32z-dev \
   libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown \
-  libxml2-utils xsltproc -y > /dev/null
+  libxml2-utils xsltproc gcc-4.5 g++-4.5 gcc-4.5-multilib g++-4.5-multilib \
+  gcc-4.4 g++-4.4 gcc-4.4-multilab g++-4.4-multilab -y > /dev/null
 
 echo "4. Install Emacs"
 sudo apt-get install emacs mew -y > /dev/null
@@ -95,16 +97,17 @@ echo "14. Install Beyond compare"
 sudo dpkg -i ~/Backup/bcompare-*.deb  > /dev/null
 
 echo "15. Copy all config file"
-if [ ! -e ~/bin/setup.sh ]; then
-    cp -rf ~/Backup/config/bin/ ~/bin
+if [ ! -e ~/bin ]; then
+    cp -rf ~/Backup/config/bin ~
 fi
-if [ ! -e ~/.rc/gitconfig ]; then
-    cp -rf ~/Backup/config/rc ~/.rc
-    ln -sf ~/.rc/bashrc ~/.bashrc > /dev/null
-fi
-if [ ! -e ~/.ssh/configs ]; then
-    cp -rf ~/Backup/config/ssh ~/.ssh
+if [ ! -e ~/.rc ]; then
+    mkdir ~/.rc
+    cp -rf ~/Backup/config/rc/* ~/.rc
     .rc/install.sh > /dev/null
+fi
+if [ ! -e ~/.ssh ]; then
+    mkdir ~/.ssh
+    cp -rf ~/Backup/config/ssh/* ~/.ssh
 fi
 if [ -e ~/.config/fcitx ]; then
     cp -rf ~/Backup/config/fcitx ~/.config
