@@ -85,7 +85,7 @@ sudo apt-get install im-switch fcitx fcitx-config-gtk fcitx-table-all -y > /dev/
 im-switch -s fcitx -z default
 
 echo "13. Set some misc"
-sudo apt-get install tree -y > /dev/null
+sudo apt-get install tree tmux -y > /dev/null
 # Set Ubuntu support Chinese Characters
 sudo chmod 666 /var/lib/locales/supported.d/local
 sudo echo "zh_CN.GBK GBK" >> /var/lib/locales/supported.d/local
