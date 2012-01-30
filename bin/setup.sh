@@ -26,13 +26,13 @@ fi
 
 # For Android Compile
 echo "3. Install android compile tools"
-sudo apt-get Install git -y > /dev/null
+sudo apt-get install git -y > /dev/null
 sudo apt-get install git-core gnupg flex bison gperf build-essential \
   zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
   x11proto-core-dev libx11-dev lib32readline-dev lib32z-dev \
   libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown \
   libxml2-utils xsltproc gcc-4.5 g++-4.5 gcc-4.5-multilib g++-4.5-multilib \
-  gcc-4.4 g++-4.4 gcc-4.4-multilab g++-4.4-multilab -y > /dev/null
+  gcc-4.4 g++-4.4 gcc-4.4-multilib g++-4.4-multilib -y > /dev/null
 
 echo "4. Install Emacs"
 sudo apt-get install emacs mew -y > /dev/null
@@ -67,7 +67,7 @@ sudo apt-get install unzip zip rar unrar p7zip -y > /dev/null
 sudo apt-get install convmv -y > /dev/null
 
 echo "9. Install System tools"
-sudo apt-get install tweak samba smbclient smbfs ssh -y > /dev/null
+sudo apt-get install ckermit tweak samba smbclient smbfs ssh -y > /dev/null
 
 # Maximize gnome-terminal when it start up
 echo "10. Set terminal"
