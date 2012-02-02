@@ -1,5 +1,8 @@
 #/bin/bash
 
+sudo cp ~/Backup/config/configs/hosts /etc/hosts
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak #backup the config
+sudo cp ~/Backup/config/configs/sources.list /etc/apt/sources.list
 
 echo "1. Install JDK"
 if [ ! -e /usr/lib/jvm ]; then
