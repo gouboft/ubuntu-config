@@ -27,7 +27,7 @@ fi
 
 # For Android Compile
 echo "2. Install android compile tools"
-sudo apt-get install git -y > /dev/null
+sudo apt-get install git gitg -y > /dev/null
 sudo apt-get install git-core gnupg flex bison gperf build-essential \
   zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
   x11proto-core-dev libx11-dev lib32readline-dev lib32z-dev \
@@ -116,6 +116,7 @@ fi
 
 echo "15. Install google chrome and flash player"
 cd ~/Backup/documents/
+sudo apt-get install libnss3-1d -y >/dev/null
 sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null
 tar -xzvf install_flash_player*.gz > /dev/null 
 sudo cp -r usr/ /
