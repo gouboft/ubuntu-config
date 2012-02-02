@@ -35,6 +35,13 @@ sudo apt-get install git-core gnupg flex bison gperf build-essential \
   libxml2-utils xsltproc gcc-4.5 g++-4.5 gcc-4.5-multilib g++-4.5-multilib \
   gcc-4.4 g++-4.4 gcc-4.4-multilib g++-4.4-multilib -y > /dev/null
 
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 300
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.5 200
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 100
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 300
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.5 200
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 100
+
 echo "3. Install Emacs"
 sudo apt-get install emacs mew -y > /dev/null
 if [ ! -e ~/.emacs.d ]; then
@@ -111,7 +118,7 @@ if [ ! -e ~/.ssh ]; then
     cp -rf ~/Backup/config/ssh/* ~/.ssh
 fi
 if [ -e ~/.config/fcitx ]; then
-    cp -rf ~/Backup/config/fcitx ~/.config
+    cp -rf ~/Backup/config/fcitx/ ~/.config/
 fi  
 
 echo "15. Install google chrome and flash player"
