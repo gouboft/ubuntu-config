@@ -103,6 +103,7 @@ sudo echo "zh_CN.GBK GBK" >> /var/lib/locales/supported.d/local
 sudo echo "zh_CN.GB2312 GB2312" >> /var/lib/locales/supported.d/local
 sudo chmod 644 /var/lib/locales/supported.d/local
 sudo dpkg-reconfigure --force locales > /dev/null
+sudo apt-get install gtk2-engines-pixbuf -y > /dev/null # remove warning when open GTK software in shell
 
 echo "13. Install Beyond compare"
 sudo dpkg -i ~/Backup/documents/bcompare-*.deb  > /dev/null
@@ -122,7 +123,7 @@ if [ ! -e ~/.ssh ]; then
 fi
 if [ -e ~/.config/fcitx ]; then
     cp -rf ~/Backup/config/fcitx/ ~/.config/
-fi  
+fi
 
 echo "15. Install google chrome and flash player"
 cd ~/Backup/documents/
