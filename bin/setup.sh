@@ -111,6 +111,8 @@ sudo dpkg -i ~/Backup/documents/bcompare-*.deb  > /dev/null
 echo "14. Copy all config file"
 if [ ! -e ~/bin ]; then
     cp -rf ~/Backup/config/bin ~
+    sudo chown root:root ~/bin/1.AreYouCrazy
+    sudo chmod 000 ~/bin/1.AreYouCrazy
 fi
 if [ ! -e ~/.rc ]; then
     mkdir ~/.rc
