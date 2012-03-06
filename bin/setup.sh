@@ -85,15 +85,20 @@ echo "9. Set terminal"
 sudo sed -i 's/^Exec=gnome-terminal/Exec=gnome-terminal --maximize/' /usr/share/applications/gnome-terminal.desktop
 sudo apt-get install  nautilus-open-terminal -y > /dev/null
 
-# Install PDF Printer
+# Install PDF tools
 echo "10. Install pdf printer"
-sudo apt-get install cups-pdf -y > /dev/null
+sudo apt-get install cups-pdf -y > /dev/null #pdf printer
+sudo apt-get install mupdf apvlv -y > /dev/null #pdf reader like vi control
+sudo apt-get install uzbl mutt -y > /dev/null # uzbl: Browser, mutt: Mail client
 
 
 echo "11. Install Fcitx Input Method"
 sudo apt-get remove ibus -y > /dev/null
 sudo apt-get install im-switch fcitx fcitx-config-gtk fcitx-table-all -y > /dev/null
 im-switch -s fcitx -z default
+if [ -d ~/.config ]; then
+    cp -rf ~/Backup/config/fcitx ~/.config/
+fi
 
 echo "12. Set some misc"
 sudo apt-get install tree tmux -y > /dev/null
@@ -110,22 +115,27 @@ sudo dpkg -i ~/Backup/documents/bcompare-*.deb  > /dev/null
 
 echo "14. Copy all config file"
 if [ ! -e ~/bin ]; then
-    cp -rf ~/Backup/config/bin ~
-    sudo chown root:root ~/bin/1.AreYouCrazy
-    sudo chmod 000 ~/bin/1.AreYouCrazy
+    ln -sf ~/Backup/config/bin ~/bin
+else
+    rm -rf ~/bin
+    ln -sf ~/Backup/config/bin ~/bin
 fi
+
 if [ ! -e ~/.rc ]; then
-    mkdir ~/.rc
-    cp -rf ~/Backup/config/rc/* ~/.rc
+    ln -sf ~/Backup/config/rc ~/.rc
     .rc/install.sh > /dev/null
+else
+    rm -rf ~/.rc
+    ln -sf ~/Backup/config/rc ~/.rc
 fi
+
 if [ ! -e ~/.ssh ]; then
-    mkdir ~/.ssh
-    cp -rf ~/Backup/config/ssh/* ~/.ssh
+    ln -sf ~/Backup/config/ssh ~/.ssh
+else
+    rm -rf ~/.ssh
+    ln -sf ~/Backup/config/ssh ~/.ssh
 fi
-if [ -e ~/.config/fcitx ]; then
-    cp -rf ~/Backup/config/fcitx/ ~/.config/
-fi
+
 
 echo "15. Install google chrome and flash player"
 cd ~/Backup/documents/
