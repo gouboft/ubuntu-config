@@ -1,0 +1,34 @@
+# Android Dir
+ANDROID_DIR=~/Source/allwinner/ics/android4.0
+ANDROID_DEVICE_DIR=$ANDROID_DIR/device/softwinner
+ANDROID_OUT_DIR=$ANDROID_DIR/out/target/product
+ANDROID_PACKAGES_APPS_DIR=$ANDROID_DIR/packages/apps
+ANDROID_FRAMEWORKS_BASE_DIR=$ANDROID_DIR/frameworks/base
+
+# Kernel Dir
+KERNEL_DIR=$ANDROID_DIR/vendor/softwinner/linux-3.0
+KERNEL_DRIVERS_DIR=$KERNEL_DIR/drivers
+KERNEL_ARM_DIR=$KERNEL_DIR/arch/arm
+KERNEL_ARM_CONFIGS_DIR=$KERNEL_ARM_DIR/configs
+
+VENDOR_DIR=$ANDROID_DIR/vendor/softwinner
+
+# Allwinner
+TOOLS_DIR=$VENDOR_DIR/tools/pack/chips/sun4i/configs/crane
+TOOLS_PACK_DIR=$VENDOR_DIR/tools/pack
+##########################################################
+
+alias a='cd $ANDROID_DIR'
+alias ad='cd $ANDROID_DEVICE_DIR'
+alias ao='cd $ANDROID_OUT_DIR'
+alias ap='cd $ANDROID_PACKAGES_APPS_DIR'
+alias af='cd $ANDROID_FRAMEWORKS_BASE_DIR'
+
+alias k='cd $KERNEL_DIR'
+alias kd='cd $KERNEL_DRIVERS_DIR'
+alias ka='cd $KERNEL_ARM_DIR'
+alias kac='cd $KERNEL_ARM_CONFIGS_DIR'
+
+alias v='cd $VENDOR_DIR'
+alias at='cd $TOOLS_DIR'
+alias atp='cd $TOOLS_PACK_DIR'
