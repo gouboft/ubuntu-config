@@ -86,7 +86,7 @@ sudo sed -i 's/^Exec=gnome-terminal/Exec=gnome-terminal --maximize/' /usr/share/
 sudo apt-get install  nautilus-open-terminal -y > /dev/null
 
 # Install PDF tools
-echo "10. Install pdf printer"
+echo "10. Install pdf tools, browser ..."
 sudo apt-get install cups-pdf -y > /dev/null #pdf printer
 sudo apt-get install mupdf apvlv -y > /dev/null #pdf reader like vi control
 sudo apt-get install uzbl mutt -y > /dev/null # uzbl: Browser, mutt: Mail client
@@ -103,11 +103,14 @@ fi
 echo "12. Set some misc"
 sudo apt-get install tree tmux -y > /dev/null
 # Set Ubuntu support Chinese Characters
-sudo chmod 666 /var/lib/locales/supported.d/local
-sudo echo "zh_CN.GBK GBK" >> /var/lib/locales/supported.d/local
-sudo echo "zh_CN.GB2312 GB2312" >> /var/lib/locales/supported.d/local
-sudo chmod 644 /var/lib/locales/supported.d/local
-sudo dpkg-reconfigure --force locales > /dev/null
+RET=$(sed -n "/GBK/p" /var/lib/locales/supported.d/local)
+if [ "$RET" != "zh_CN.GBK GBK" ]; then
+    sudo chmod 666 /var/lib/locales/supported.d/local
+    sudo echo "zh_CN.GBK GBK" >> /var/lib/locales/supported.d/local
+    sudo echo "zh_CN.GB2312 GB2312" >> /var/lib/locales/supported.d/local
+    sudo chmod 644 /var/lib/locales/supported.d/local
+fi
+sudo dpkg-reconfigure -force locales > /dev/null
 sudo apt-get install gtk2-engines-pixbuf -y > /dev/null # remove warning when open GTK software in shell
 
 echo "13. Install Beyond compare"
