@@ -1,3 +1,0 @@
-SSH_AUTH_SOCK=/tmp/ssh-JyMVRwCK2436/agent.2436; export SSH_AUTH_SOCK;
-SSH_AGENT_PID=2438; export SSH_AGENT_PID;
-#echo Agent pid 2438;
