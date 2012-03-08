@@ -143,7 +143,7 @@ fi
 echo "15. Install google chrome and flash player"
 cd ~/Backup/documents/
 sudo apt-get install libnss3-1d -y >/dev/null
-sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null
+sudo dpkg -i google-chrome*.deb > /dev/null
 tar -xzvf install_flash_player*.gz > /dev/null 
 sudo cp -r usr/ /
 sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
