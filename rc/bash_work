@@ -33,8 +33,3 @@ alias v='cd $VENDOR_DIR'
 alias at='cd $TOOLS_DIR'
 alias atp='cd $TOOLS_PACK_DIR'
 
-# For fastboot
-alias fboot='sudo fastboot flash boot boot.img'
-alias fsys='sudo fastboot flash system system.img'
-alias fbootloader='sudo fastboot flash bootloader vendor/softwinner/tools/pack/out/bootloader.fex'
-alias freboot='sudo fastboot reboot'
