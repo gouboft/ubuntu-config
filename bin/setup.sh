@@ -2,9 +2,12 @@
 
 # Do some prepare 
 sudo cp ~/Backup/config/configs/hosts /etc/hosts
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak #backup the config
+if [ ! -f /etc/apt/sources.list.bak ]; then
+    #backup the config, and do not backup it again
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak 
+fi
 sudo cp ~/Backup/config/configs/sources.list.163 /etc/apt/sources.list
-sudo apt-get update
+sudo apt-get update > /dev/null
 if [ ! -e ~/.ssh ]; then
     ln -sf ~/Backup/config/ssh ~/.ssh
 else
@@ -98,10 +101,14 @@ echo "10. Install pdf tools, browser ..."
 sudo apt-get install cups-pdf -y > /dev/null #pdf printer
 sudo apt-get install mupdf apvlv -y > /dev/null #pdf reader like vi control
 sudo apt-get install uzbl mutt -y > /dev/null # uzbl: Browser, mutt: Mail client
-# install the library of the sxiv, which is a image review tool
-sudo apt-get install libimlib2-dev > /dev/null 
-cd /tmp && git clone git://github.com/muennich/sxiv.git > /dev/null && cd -
-cd /tmp/sxiv && make && sudo make install && cd -
+# install sxiv, which is a image review tool
+if [ ! -x /usr/local/bin/sxiv ]; then
+    sudo apt-get install libimlib2-dev > /dev/null #the library for the sxiv 
+    cd /tmp && git clone git://github.com/muennich/sxiv.git > /dev/null && cd - > /dev/null
+    cd /tmp/sxiv && make && sudo make install && cd - > /dev/null
+    rm -rf /tmp/sxiv
+fi
+
 
 
 echo "11. Install Fcitx Input Method"
@@ -126,7 +133,7 @@ sudo dpkg-reconfigure -force locales > /dev/null
 sudo apt-get install gtk2-engines-pixbuf -y > /dev/null # remove warning when open GTK software in shell
 
 echo "13. Install Beyond compare"
-sudo dpkg -i ~/Backup/documents/bcompare-*.deb  > /dev/null
+sudo dpkg -i ~/Backup/documents/bcompare*.deb  > /dev/null
 
 echo "14. Copy all config file"
 if [ ! -e ~/bin ]; then
@@ -148,7 +155,9 @@ echo "15. Install google chrome and flash player"
 cd ~/Backup/documents/
 sudo apt-get install libnss3-1d -y >/dev/null
 sudo dpkg -i google-chrome*.deb > /dev/null
-tar -xzvf install_flash_player*.gz > /dev/null 
-sudo cp -r usr/ /
-sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
-rm -r usr libflashplayer.so
+if [ -f install_flash_player* ]; then
+    tar -xzvf install_flash_player*.gz > /dev/null 
+    sudo cp -r usr/ /
+    sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
+    rm -r usr libflashplayer.so
+fi
