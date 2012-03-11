@@ -1,8 +1,17 @@
-#/bin/bash
+#!/bin/bash
 
+# Do some prepare 
 sudo cp ~/Backup/config/configs/hosts /etc/hosts
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak #backup the config
-sudo cp ~/Backup/config/configs/sources.list /etc/apt/sources.list
+sudo cp ~/Backup/config/configs/sources.list.163 /etc/apt/sources.list
+sudo apt-get update
+if [ ! -e ~/.ssh ]; then
+    ln -sf ~/Backup/config/ssh ~/.ssh
+else
+    rm -rf ~/.ssh
+    ln -sf ~/Backup/config/ssh ~/.ssh
+fi
+
 
 echo "1. Install JDK"
 if [ ! -e /usr/lib/jvm ]; then
@@ -15,7 +24,6 @@ if [ ! -e /usr/lib/jvm ]; then
 	sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.6.0_30/bin/java 200
 	sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.6.0_30/bin/javac 200
     fi
-
 
     echo "1.2 Install JDK 1.7"
     if [ ! -e /usr/lib/jvm/jdk1.7.0_02 ]; then
@@ -30,8 +38,8 @@ fi
 
 # For Android Compile
 echo "2. Install android compile tools"
-sudo apt-get install git gitg -y > /dev/null
-sudo apt-get install git-core gnupg flex bison gperf build-essential \
+sudo apt-get install git git-core qgit gitk -y > /dev/null
+sudo apt-get install gnupg flex bison gperf build-essential \
   zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
   x11proto-core-dev libx11-dev lib32readline-dev lib32z-dev \
   libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown \
@@ -75,7 +83,7 @@ sudo apt-get install filezilla -y > /dev/null
 
 echo "7. Install archive tools"
 sudo apt-get install unzip zip rar unrar p7zip -y > /dev/null
-sudo apt-get install convmv -y > /dev/null
+sudo apt-get install convmv -y > /dev/null # convert the file name coding: convmv -f UTF-8 -t GBK --notest utf8
 
 echo "8. Install System tools"
 sudo apt-get install ckermit tweak samba smbclient smbfs ssh -y > /dev/null
@@ -85,11 +93,15 @@ echo "9. Set terminal"
 sudo sed -i 's/^Exec=gnome-terminal/Exec=gnome-terminal --maximize/' /usr/share/applications/gnome-terminal.desktop
 sudo apt-get install  nautilus-open-terminal -y > /dev/null
 
-# Install PDF tools
+# Install my useful tools
 echo "10. Install pdf tools, browser ..."
 sudo apt-get install cups-pdf -y > /dev/null #pdf printer
 sudo apt-get install mupdf apvlv -y > /dev/null #pdf reader like vi control
 sudo apt-get install uzbl mutt -y > /dev/null # uzbl: Browser, mutt: Mail client
+# install the library of the sxiv, which is a image review tool
+sudo apt-get install libimlib2-dev > /dev/null 
+cd /tmp && git clone git://github.com/muennich/sxiv.git > /dev/null && cd -
+cd /tmp/sxiv && make && sudo make install && cd -
 
 
 echo "11. Install Fcitx Input Method"
@@ -131,14 +143,6 @@ else
     rm -rf ~/.rc
     ln -sf ~/Backup/config/rc ~/.rc
 fi
-
-if [ ! -e ~/.ssh ]; then
-    ln -sf ~/Backup/config/ssh ~/.ssh
-else
-    rm -rf ~/.ssh
-    ln -sf ~/Backup/config/ssh ~/.ssh
-fi
-
 
 echo "15. Install google chrome and flash player"
 cd ~/Backup/documents/
