@@ -33,3 +33,6 @@ alias v='cd $VENDOR_DIR'
 alias at='cd $TOOLS_DIR'
 alias atp='cd $TOOLS_PACK_DIR'
 
+
+#Cross compiler
+export PATH=/opt/toolchain/bin:$PATH
