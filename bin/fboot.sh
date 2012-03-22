@@ -10,12 +10,14 @@ fi
 
 DIR=$(echo $TARGET_PRODUCT | sed 's/crane_/crane-/g')
 BOOTIMG="out/target/product/$DIR/boot.img"
-SYSTEMIMG="out/target/product/$DIR/boot.img"
+SYSTEMIMG="out/target/product/$DIR/system.img"
+USERDATAIMG="out/target/product/$DIR/userdata.img"
 BOOTLOADERIMG="vendor/softwinner/tools/pack/out/bootloader.fex"
 echo ""
 echo -e '\033[0;34;1m======================================================\033[0m'
 echo boot.img=$BOOTIMG
 echo system.img=$SYSTEMIMG
+echo userdata.img=$USERDATAIMG
 echo bootloader=$BOOTLOADERIMG
 echo -e '\033[0;34;1m======================================================\033[0m'
 
@@ -23,40 +25,29 @@ echo -e 'Are you want to flash \033[0;31;1mboot\033[0m partition? [Y/n]'
 read Inputb
 echo -e 'Are you want to flash \033[0;31;1mbootloader\033[0m partition? [Y/n]'
 read Inputbl
+echo -e 'Are you want to flash \033[0;31;1muserdata\033[0m partition? [Y/n]'
+read Inputud
 echo -e 'Are you want to flash \033[0;31;1msystem\033[0m partition? [Y/n]'
 read Inputs
 
 
-#Are you better idea to rewite this?
-if [ "$Inputb" == "n" ]; then 
-	if [ "$Inputbl" == "n" ]; then 
-		if [ "$Inputs" == "n" ]; then 
-			TODOFLASH="no"
-		else
-			ISON=$(adb devices | grep 2008 | sed 's/20080411\tdevice/on/g')
-			if [ "$ISON" == "on" ]; then
-				adb reboot fastboot
-			fi
-		fi
-	else
-		ISON=$(adb devices | grep 2008 | sed 's/20080411\tdevice/on/g')
-		if [ "$ISON" == "on" ]; then
-			adb reboot fastboot
-		fi
-	fi
+if [ "$Inputb" == "n" -a "$Inputbl" == "n" -a "$Inputud" == "n" -a "$Inputs" == "n" ]; then 
+	TODOFLASH="no"
 else
-		ISON=$(adb devices | grep 2008 | sed 's/20080411\tdevice/on/g')
-		if [ "$ISON" == "on" ]; then
-			adb reboot fastboot
-		fi
+	ISON=$(adb devices | grep 2008 | sed 's/20080411\tdevice/on/g')
+	if [ "$ISON" == "on" ]; then
+		adb reboot fastboot
+	else
+		echo "No device found"
+	fi
 fi
+
 
 echo -e '\033[0;31;1m==================== Fastboot Start ==================\033[0m'
 
 if [ "$TODOFLASH" != "no" ]; then
 	# Flash boot partition
 	if [ "$Inputb" != "n" ]; then
-		sudo fastboot erase boot > /dev/null
 		sudo fastboot flash boot $BOOTIMG
 		sleep 2
 		echo "Boot flash success"
@@ -65,16 +56,22 @@ if [ "$TODOFLASH" != "no" ]; then
 
 	# Flash bootloader partition
     	if [ "$Inputbl" != "n" ]; then
-		sudo fastboot erase bootloader > /dev/null
 		sudo fastboot flash bootloader $BOOTLOADERIMG
 		sleep 2
 		echo "Bootloader flash success"
 		echo ""
     	fi
 
+	# Flash userdata partition
+    	if [ "$Inputud" != "n" ]; then
+		sudo fastboot flash data $USERDATAIMG
+		sleep 2
+		echo "Userdata flash success"
+		echo ""
+    	fi
+
 	# Flash system partition
     	if [ "$Inputs" != "n" ]; then
-		sudo fastboot erase system > /dev/null
 		sudo fastboot flash system $SYSTEMIMG
 		sleep 2
 		echo "System flash success"
