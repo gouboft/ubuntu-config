@@ -7,6 +7,7 @@ if [ ! -f /etc/apt/sources.list.bak ]; then
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak 
 fi
 sudo cp ~/Backup/config/configs/sources.list.163 /etc/apt/sources.list
+sudo cp ~/Backup/config/configs/51-android.rules /etc/udev/rules.d/
 sudo apt-get update > /dev/null
 if [ ! -e ~/.ssh ]; then
     ln -sf ~/Backup/config/ssh ~/.ssh

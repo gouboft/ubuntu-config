@@ -8,6 +8,5 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-192.168.1.10 venus
 192.168.1.20 build
 211.103.252.242 bear
