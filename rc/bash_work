@@ -18,9 +18,6 @@ VENDOR_DIR=$ANDROID_DIR/vendor/softwinner
 TOOLS_DIR=$VENDOR_DIR/tools/pack/chips/sun4i/configs/crane
 TOOLS_PACK_DIR=$VENDOR_DIR/tools/pack
 
-# BYD_android_2.3
-BYD_ANDROID=~/Source/allwinner/gingerbread/byd_android/android2.3.4
-BYD_KERNEL=~/Source/allwinner/gingerbread/byd_android/lichee/linux-2.6.36
 ##########################################################
 
 alias a='cd $ANDROID_DIR'
@@ -37,8 +34,7 @@ alias kac='cd $KERNEL_ARM_CONFIGS_DIR'
 alias v='cd $VENDOR_DIR'
 alias at='cd $TOOLS_DIR'
 alias atp='cd $TOOLS_PACK_DIR'
-alias ba='cd $BYD_ANDROID'
-alias bk='cd $BYD_KERNEL'
+
 alias aa='cd $ANDROID_DEVICE_AUDIO_DIR'
 
 #Cross compiler
