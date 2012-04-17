@@ -1,0 +1,4 @@
+# fastboot protocol on crespo/crespo4g (Nexus S)
+SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0600", OWNER="link"
+# usbboot protocol on Sony Xperia (Lt25i)
+SUBSYSTEM=="usb", ATTR{idVendor}=="0fce", MODE="0600", OWNER="link"
