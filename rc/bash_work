@@ -4,6 +4,7 @@ ANDROID_DEVICE_DIR=$ANDROID_DIR/device/softwinner
 ANDROID_OUT_DIR=$ANDROID_DIR/out/target/product
 ANDROID_PACKAGES_APPS_DIR=$ANDROID_DIR/packages/apps
 ANDROID_FRAMEWORKS_BASE_DIR=$ANDROID_DIR/frameworks/base
+ANDROID_DEVICE_AUDIO_DIR=$ANDROID_DEVICE_DIR/common/hardware/audio
 
 # Kernel Dir
 KERNEL_DIR=$ANDROID_DIR/vendor/softwinner/linux-3.0
@@ -38,6 +39,7 @@ alias at='cd $TOOLS_DIR'
 alias atp='cd $TOOLS_PACK_DIR'
 alias ba='cd $BYD_ANDROID'
 alias bk='cd $BYD_KERNEL'
+alias aa='cd $ANDROID_DEVICE_AUDIO_DIR'
 
 #Cross compiler
 export PATH=/opt/toolchain/bin:$PATH
