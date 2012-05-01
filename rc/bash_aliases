@@ -36,12 +36,6 @@ export d=~/Desktop
 export D=~/Downloads
 export W=~/Work
 
-#set java environment
-export JAVA_HOME=/usr/lib/jvm/java-6-sun-1.6.0.26
-export JRE_HOME=/usr/lib/jvm/java-6-sun-1.6.0.26/jre
-export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
-export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
-
 # Add toolchain for compile
 export PATH=/opt/toolchain/arm-eabi-4.5.0/bin:$PATH
 
@@ -73,7 +67,8 @@ alias cl6='cl ../../../../../..'
 alias cl7='cl ../../../../../../..'
 alias cl8='cl ../../../../../../../..'
 
-# Add Java Path
+#set java environment
 export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_30
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-export PATH=$JAVA_HOME/bin:$PATH
+export JRE_HOME=$JAVE_HOME/jre
+export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
