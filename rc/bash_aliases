@@ -64,14 +64,14 @@ function cl()
 		echo -e '\033[0;31;1mNo such file or directory\033[0m' && ls && echo -e '\033[0;31;1mPlease check it\033[0m'
 	fi
 }
-alias cl1='cd ..'
-alias cl2='cd ../..'
-alias cl3='cd ../../..'
-alias cl4='cd ../../../..'
-alias cl5='cd ../../../../..'
-alias cl6='cd ../../../../../..'
-alias cl7='cd ../../../../../../..'
-alias cl8='cd ../../../../../../../..'
+alias cl1='cl ..'
+alias cl2='cl ../..'
+alias cl3='cl ../../..'
+alias cl4='cl ../../../..'
+alias cl5='cl ../../../../..'
+alias cl6='cl ../../../../../..'
+alias cl7='cl ../../../../../../..'
+alias cl8='cl ../../../../../../../..'
 
 # Add Java Path
 export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_30
