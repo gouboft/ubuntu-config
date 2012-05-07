@@ -69,6 +69,6 @@ alias cl8='cl ../../../../../../../..'
 
 #set java environment
 export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_30
-export JRE_HOME=$JAVE_HOME/jre
+export JRE_HOME=/usr/lib/jvm/jdk1.6.0_30
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
