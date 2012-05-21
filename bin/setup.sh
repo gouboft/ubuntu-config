@@ -42,13 +42,12 @@ fi
 
 # For Android Compile
 echo "2. Install android compile tools"
-sudo apt-get install git git-core qgit gitk -y > /dev/null
-sudo apt-get install gnupg flex bison gperf build-essential \
-  zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
-  x11proto-core-dev libx11-dev lib32readline-dev lib32z-dev \
-  libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown \
-  libxml2-utils xsltproc gcc-4.5 g++-4.5 gcc-4.5-multilib g++-4.5-multilib \
-  gcc-4.4 g++-4.4 gcc-4.4-multilib g++-4.4-multilib -y > /dev/null
+sudo apt-get install git-core gitk gnupg flex bison gperf build-essential \
+  zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev \
+  libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev:i386 \
+  g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown \
+  libxml2-utils xsltproc zlib1g-dev:i386 gcc-4.4 g++-4.4 \
+  gcc-4.4-multilib g++-4.4-multilib
 
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 300
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.5 200
