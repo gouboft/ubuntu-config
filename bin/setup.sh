@@ -4,11 +4,11 @@
 sudo cp ~/Backup/config/configs/hosts /etc/hosts
 if [ ! -f /etc/apt/sources.list.bak ]; then
     #backup the config, and do not backup it again
-    sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak 
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    sudo cp ~/Backup/config/configs/sources.list.163 /etc/apt/sources.list
+    sudo apt-get update > /dev/null
 fi
-sudo cp ~/Backup/config/configs/sources.list.163 /etc/apt/sources.list
 sudo cp ~/Backup/config/configs/51-android.rules /etc/udev/rules.d/
-sudo apt-get update > /dev/null
 if [ ! -e ~/.ssh ]; then
     ln -sf ~/Backup/config/ssh ~/.ssh
 else
@@ -38,7 +38,6 @@ if [ ! -e /usr/lib/jvm ]; then
 	sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_02/bin/javac 100
     fi
 fi
-
 
 # For Android Compile
 echo "2. Install android compile tools"
@@ -101,15 +100,6 @@ echo "10. Install pdf tools, browser ..."
 sudo apt-get install cups-pdf -y > /dev/null #pdf printer
 sudo apt-get install mupdf apvlv -y > /dev/null #pdf reader like vi control
 sudo apt-get install uzbl mutt -y > /dev/null # uzbl: Browser, mutt: Mail client
-# install sxiv, which is a image review tool
-if [ ! -x /usr/local/bin/sxiv ]; then
-    sudo apt-get install libimlib2-dev > /dev/null #the library for the sxiv 
-    cd /tmp && git clone git://github.com/muennich/sxiv.git > /dev/null && cd - > /dev/null
-    cd /tmp/sxiv && make && sudo make install && cd - > /dev/null
-    rm -rf /tmp/sxiv
-fi
-
-
 
 echo "11. Install Fcitx Input Method"
 sudo apt-get remove ibus -y > /dev/null
