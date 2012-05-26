@@ -42,17 +42,15 @@ fi
 # For Android Compile
 echo "2. Install android compile tools"
 sudo apt-get install git-core gitk gnupg flex bison gperf build-essential \
-  zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev \
+  zip curl libc6-dev libncurses5-dev:i386 libncurses5-dbg x11proto-core-dev \
   libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev:i386 \
   g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown \
   libxml2-utils xsltproc zlib1g-dev:i386 gcc-4.4 g++-4.4 \
-  gcc-4.4-multilib g++-4.4-multilib
+  gcc-4.4-multilib g++-4.4-multilib > /dev/null
 
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 300
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.5 200
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 100
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 300
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.5 200
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 100
 
 echo "3. Install Emacs"
