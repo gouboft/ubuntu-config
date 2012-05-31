@@ -7,8 +7,8 @@ if [ ! -f my.keystore ]; then
 fi
 
 # pack the key had generated and the unsigned apk
-# $1 : the final apk
-# $2 : the unsigned apk
-jarsigner -verbose -keystore my.keystore -signedjar $1 $2 my.keystore
+# $1 : the unsigned apk
+Signed=$1_signed.apk
+jarsigner -verbose -keystore my.keystore -signedjar $Signed $1 my.keystore
 
 echo Done
