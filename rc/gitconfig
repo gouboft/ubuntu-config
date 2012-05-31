@@ -3,7 +3,7 @@
 	excludesfile=~/.gitignore
 [user]
 	name = Bo Gou
-	email = goubo@gps-e.com
+	email = link@gps-e.com
 [merge]
 	summary = true
 	tool = vimdiff
