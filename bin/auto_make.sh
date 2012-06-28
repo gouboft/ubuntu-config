@@ -25,7 +25,7 @@ repo init -u ssh://tulip/home/git/android/platform/manifests.git -m ics-cwhl.xml
 repo sync
 
 # Start compile
-cd .repo/..  && . build/envsetup.sh && lunch 11 && make -j4
+cd .repo/..  && . build/envsetup.sh && lunch 9 && make -j4
 pack
 
 if [ -f vendor/softwinner/tools/pack/sun4i_crane_jbs7.img ]; then 
