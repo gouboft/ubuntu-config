@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set environment
-export PATH=/home/jbs/bin:$PATH
+export PATH=$HOME/bin:$PATH
 export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_30
 export JRE_HOME=/usr/lib/jvm/jdk1.6.0_30
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
@@ -9,13 +9,13 @@ export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
 
 # Set the auto make path
 DATE=`date +%Y%m%d`
-AUTO_MAKE_DIR=/home/jbs/Source/allwinner/automake
+AUTO_MAKE_DIR=$HOME/Source/allwinner/automake
 
 if [ -d $AUTO_MAKE_DIR ]; then
 	rm -rf $AUTO_MAKE_DIR
 	mkdir $AUTO_MAKE_DIR
 else
-	mkdir $AUTO_MAKE_DIR
+	mkdir -p $AUTO_MAKE_DIR
 fi
 
 cd $AUTO_MAKE_DIR
