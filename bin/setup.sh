@@ -52,6 +52,8 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 100
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 300
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 100
 
+sudo apt-get -f install
+
 echo "3. Install Emacs"
 sudo apt-get install emacs mew -y
 if [ ! -e ~/.emacs.d ]; then
@@ -151,6 +153,7 @@ if [ -f install_flash_player* ]; then
 fi
 
 echo "16. Install Nvidia Graphic support"
+sudo add-apt-repository ppa:bumblebee/stable
 sudo add-apt-repository ppa:ubuntu-x-swat/x-updates
 sudo apt-get update
-sudo apt-get install bumblebee bumblebee-nvidia -y
+sudo apt-get install bumblebee -y
