@@ -8,6 +8,6 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-192.168.1.124 tulip
+192.168.1.232 tulip
 #121.15.172.181 tulip
 211.103.252.242 bear

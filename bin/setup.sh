@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # Do some prepare 
-sudo cp ~/Backup/config/configs/hosts /etc/hosts
 if [ ! -f /etc/apt/sources.list.bak ]; then
     #backup the config, and do not backup it again
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
     sudo cp ~/Backup/config/configs/sources.list.163 /etc/apt/sources.list
-    sudo apt-get update > /dev/null
+    sudo apt-get update
 fi
 sudo cp ~/Backup/config/configs/51-android.rules /etc/udev/rules.d/
 if [ ! -e ~/.ssh ]; then
@@ -42,19 +41,21 @@ fi
 # For Android Compile
 echo "2. Install android compile tools"
 sudo apt-get install git-core gitk gnupg flex bison gperf build-essential \
-  zip curl libc6-dev libncurses5-dev:i386 libncurses5-dbg x11proto-core-dev \
+  zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev \
   libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev:i386 \
   g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown \
   libxml2-utils xsltproc zlib1g-dev:i386 gcc-4.4 g++-4.4 \
-  gcc-4.4-multilib g++-4.4-multilib > /dev/null
+  gcc-4.4-multilib g++-4.4-multilib
 
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 300
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 100
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 300
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 100
 
+sudo apt-get -f install
+
 echo "3. Install Emacs"
-sudo apt-get install emacs mew -y > /dev/null
+sudo apt-get install emacs mew -y
 if [ ! -e ~/.emacs.d ]; then
     mkdir ~/.emacs.d
 fi
@@ -67,7 +68,7 @@ fi
 
 echo "4. Install Vim"
 cd ~
-sudo apt-get install vim exuberant-ctags -y > /dev/null
+sudo apt-get install vim exuberant-ctags -y
 if [ ! -e .vim/vimrc ]; then
     rm -rf .vim/ .vimrc
     git clone https://gouboft@github.com/gouboft/vim-config.git
@@ -76,39 +77,40 @@ fi
 ln -sf .vim/vimrc .vimrc
 
 echo "5. Install Thunderbird"
-sudo apt-get install thunderbird thunderbird-locale-zh-cn thunderbird-locale-zh-tw thunderbird-locale-ko thunderbird-locale-ja -y > /dev/null
+sudo apt-get install thunderbird thunderbird-locale-zh-cn thunderbird-locale-zh-tw thunderbird-locale-ko thunderbird-locale-ja -y
 
 echo "6. Install filezilla"
-sudo apt-get install filezilla -y > /dev/null
+sudo apt-get install filezilla -y
 
 echo "7. Install archive tools"
-sudo apt-get install unzip zip rar unrar p7zip -y > /dev/null
-sudo apt-get install convmv -y > /dev/null # convert the file name coding: convmv -f UTF-8 -t GBK --notest utf8
+sudo apt-get install unzip zip rar unrar p7zip -y
+sudo apt-get install convmv -y  # convert the file name coding: convmv -f UTF-8 -t GBK --notest utf8
 
 echo "8. Install System tools"
-sudo apt-get install ckermit tweak samba smbclient smbfs ssh -y > /dev/null
+sudo apt-get install ckermit tweak samba smbclient smbfs ssh -y
 
 # Maximize gnome-terminal when it start up
 echo "9. Set terminal"
 sudo sed -i 's/^Exec=gnome-terminal/Exec=gnome-terminal --maximize/' /usr/share/applications/gnome-terminal.desktop
-sudo apt-get install  nautilus-open-terminal -y > /dev/null
+sudo apt-get install  nautilus-open-terminal -y
 
 # Install my useful tools
 echo "10. Install pdf tools, browser ..."
-sudo apt-get install cups-pdf -y > /dev/null #pdf printer
-sudo apt-get install mupdf apvlv -y > /dev/null #pdf reader like vi control
-sudo apt-get install uzbl mutt -y > /dev/null # uzbl: Browser, mutt: Mail client
+sudo apt-get install cups-pdf -y #pdf printer
+sudo apt-get install mupdf apvlv -y #pdf reader like vi control
+sudo apt-get install uzbl mutt -y # uzbl: Browser, mutt: Mail client
 
 echo "11. Install Fcitx Input Method"
-sudo apt-get remove ibus -y > /dev/null
-sudo apt-get install im-switch fcitx fcitx-config-gtk fcitx-table-all -y > /dev/null
+sudo apt-get remove ibus -y
+sudo apt-get install im-switch fcitx fcitx-config-gtk fcitx-table-all -y
 im-switch -s fcitx -z default
 if [ -d ~/.config ]; then
-    cp -rf ~/Backup/config/fcitx ~/.config/
+	rm -r ~/.config/fcitx
+	ln -s ~/Backup/config/fcixt ~/.config/fcitx
 fi
 
 echo "12. Set some misc"
-sudo apt-get install tree tmux -y > /dev/null
+sudo apt-get install tree tmux -y
 # Set Ubuntu support Chinese Characters
 RET=$(sed -n "/GBK/p" /var/lib/locales/supported.d/local)
 if [ "$RET" != "zh_CN.GBK GBK" ]; then
@@ -118,10 +120,10 @@ if [ "$RET" != "zh_CN.GBK GBK" ]; then
     sudo chmod 644 /var/lib/locales/supported.d/local
 fi
 sudo dpkg-reconfigure -force locales > /dev/null
-sudo apt-get install gtk2-engines-pixbuf -y > /dev/null # remove warning when open GTK software in shell
+sudo apt-get install gtk2-engines-pixbuf -y # remove warning when open GTK software in shell
 
 echo "13. Install Beyond compare"
-sudo dpkg -i ~/Backup/documents/bcompare*.deb  > /dev/null
+sudo dpkg -i ~/Backup/documents/bcompare*.deb
 
 echo "14. Copy all config file"
 if [ ! -e ~/bin ]; then
@@ -141,7 +143,7 @@ fi
 
 echo "15. Install google chrome and flash player"
 cd ~/Backup/documents/
-sudo apt-get install libnss3-1d -y >/dev/null
+sudo apt-get install libnss3-1d -y
 sudo dpkg -i google-chrome*.deb > /dev/null
 if [ -f install_flash_player* ]; then
     tar -xzvf install_flash_player*.gz > /dev/null 
@@ -149,3 +151,9 @@ if [ -f install_flash_player* ]; then
     sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
     rm -r usr libflashplayer.so
 fi
+
+echo "16. Install Nvidia Graphic support"
+sudo add-apt-repository ppa:bumblebee/stable
+sudo add-apt-repository ppa:ubuntu-x-swat/x-updates
+sudo apt-get update
+sudo apt-get install bumblebee -y
