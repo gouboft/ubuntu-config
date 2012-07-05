@@ -10,6 +10,7 @@ export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
 # Set the auto make path
 DATE=`date +%Y%m%d`
 AUTO_MAKE_DIR=$HOME/Source/allwinner/automake
+VER=user
 
 if [ -d $AUTO_MAKE_DIR ]; then
 	rm -rf $AUTO_MAKE_DIR
@@ -29,9 +30,9 @@ cd .repo/..  && . build/envsetup.sh && lunch 14 && make -j4
 pack
 
 if [ -f vendor/softwinner/tools/pack/sun4i_crane_jbs7.img ]; then 
-	cp -f vendor/softwinner/tools/pack/sun4i_crane_jbs7.img ~/CWHL-$DATE.img
+	cp -f vendor/softwinner/tools/pack/sun4i_crane_jbs7.img ~/CWHL-$DATE-$VER.img
 fi
 
 #Copy to Server
-scp $HOME/CWHL-$DATE.img jbs@tulip:/home/jbs/share/Release
+scp $HOME/CWHL-$DATE-$VER.img jbs@tulip:/home/jbs/share/Release
 
