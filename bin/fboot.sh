@@ -8,6 +8,7 @@ else
 	echo -e '\033[0;32;1mYou have setup the environment\033[0m'
 fi
 
+PASSWD=jkl
 DIR=$(echo $TARGET_PRODUCT | sed 's/crane_/crane-/g')
 BOOTIMG="out/target/product/$DIR/boot.img"
 SYSTEMIMG="out/target/product/$DIR/system.img"
@@ -48,7 +49,7 @@ echo -e '\033[0;31;1m==================== Fastboot Start ==================\033[
 if [ "$TODOFLASH" != "no" ]; then
 	# Flash boot partition
 	if [ "$Inputb" != "n" ]; then
-		sudo fastboot flash boot $BOOTIMG
+		echo $PASSWD | sudo fastboot flash boot $BOOTIMG
 		sleep 2
 		echo "Boot flash success"
 		echo ""
@@ -56,7 +57,7 @@ if [ "$TODOFLASH" != "no" ]; then
 
 	# Flash bootloader partition
     	if [ "$Inputbl" != "n" ]; then
-		sudo fastboot flash bootloader $BOOTLOADERIMG
+		echo $PASSWD | sudo fastboot flash bootloader $BOOTLOADERIMG
 		sleep 2
 		echo "Bootloader flash success"
 		echo ""
@@ -64,7 +65,7 @@ if [ "$TODOFLASH" != "no" ]; then
 
 	# Flash userdata partition
     	if [ "$Inputud" != "n" ]; then
-		sudo fastboot flash data $USERDATAIMG
+		echo $PASSWD | sudo fastboot flash data $USERDATAIMG
 		sleep 2
 		echo "Userdata flash success"
 		echo ""
@@ -72,14 +73,14 @@ if [ "$TODOFLASH" != "no" ]; then
 
 	# Flash system partition
     	if [ "$Inputs" != "n" ]; then
-		sudo fastboot flash system $SYSTEMIMG
+		echo $PASSWD | sudo fastboot flash system $SYSTEMIMG
 		sleep 2
 		echo "System flash success"
 		echo ""
     	fi
 	
 	# exit fastboot mode and reboot machine
-	sudo fastboot reboot
+	echo $PASSWD | sudo fastboot reboot
 else
 	echo "Nothing to be done"
 fi
