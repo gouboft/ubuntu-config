@@ -35,7 +35,7 @@ read Inputs
 if [ "$Inputb" == "n" -a "$Inputbl" == "n" -a "$Inputud" == "n" -a "$Inputs" == "n" ]; then 
 	TODOFLASH="no"
 else
-	ISON=$(adb devices | grep 2008 | sed 's/20080411\tdevice/on/g')
+	ISON=$(adb devices | grep 2008 | sed 's/20080411413fc082\tdevice/on/g')
 	if [ "$ISON" == "on" ]; then
 		adb reboot fastboot
 	else

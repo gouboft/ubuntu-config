@@ -35,6 +35,8 @@ alias sc='scribes'
 export d=~/Desktop
 export D=~/Downloads
 export W=~/Work
+hash -d d="/home/bo/Desktop"
+hash -d D="~/Downloads"
 
 # Add toolchain for compile
 export PATH=/opt/toolchain/arm-eabi-4.5.0/bin:$PATH
@@ -66,9 +68,12 @@ alias cl5='cl ../../../../..'
 alias cl6='cl ../../../../../..'
 alias cl7='cl ../../../../../../..'
 alias cl8='cl ../../../../../../../..'
+alias senv='. build/envsetup.sh; lunch'
 
 #set java environment
 export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_30
 export JRE_HOME=/usr/lib/jvm/jdk1.6.0_30
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+
+alias zhcon='zhcon --utf8 --drv=vga'
