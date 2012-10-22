@@ -36,3 +36,7 @@ fi
 #Copy to Server
 scp $HOME/CWHL-$DATE-$VER.img jbs@tulip:/home/jbs/share/Release
 
+
+# Useage:
+# Put the following code in: crontab -e
+# 0 1 * * 2-6 PATH=/home/bo/bin:$PATH auto_make.sh
