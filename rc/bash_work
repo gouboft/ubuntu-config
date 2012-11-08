@@ -1,13 +1,16 @@
 # Android Dir
-ANDROID_DIR=~/Source/allwinner/ics/android4.0
-ANDROID_DEVICE_DIR=$ANDROID_DIR/device/softwinner
+#ANDROID_DIR=~/Source/allwinner/ics/android4.0
+ANDROID_DIR=~/Source/infoTM/jb
+#ANDROID_DEVICE_DIR=$ANDROID_DIR/device/softwinner
+ANDROID_DEVICE_DIR=$ANDROID_DIR/device/infotm
 ANDROID_OUT_DIR=$ANDROID_DIR/out/target/product
 ANDROID_PACKAGES_APPS_DIR=$ANDROID_DIR/packages/apps
 ANDROID_FRAMEWORKS_BASE_DIR=$ANDROID_DIR/frameworks/base
 ANDROID_DEVICE_AUDIO_DIR=$ANDROID_DEVICE_DIR/common/hardware/audio
 
 # Kernel Dir
-KERNEL_DIR=$ANDROID_DIR/vendor/softwinner/linux-3.0
+#KERNEL_DIR=$ANDROID_DIR/vendor/softwinner/linux-3.0
+KERNEL_DIR=$ANDROID_DIR/bootable/linux-3.0.8
 KERNEL_DRIVERS_DIR=$KERNEL_DIR/drivers
 KERNEL_ARM_DIR=$KERNEL_DIR/arch/arm
 KERNEL_ARM_CONFIGS_DIR=$KERNEL_ARM_DIR/configs
