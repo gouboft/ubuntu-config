@@ -46,6 +46,7 @@ alias gtss='git stash'
 alias gtst='git status'
 alias gttg='git tag'
 alias gtnw='git new-workdir'
+alias gtlog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
 
 
 # below is done automatically, this file is come from contrib/completion of git source tree
