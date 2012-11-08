@@ -1,12 +1,6 @@
 #!/bin/bash
 
 # Do some prepare 
-if [ ! -f /etc/apt/sources.list.bak ]; then
-    #backup the config, and do not backup it again
-    sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-    sudo cp ~/Backup/config/configs/sources.list.163 /etc/apt/sources.list
-    sudo apt-get update
-fi
 sudo cp ~/Backup/config/configs/51-android.rules /etc/udev/rules.d/
 if [ ! -e ~/.ssh ]; then
     ln -sf ~/Backup/config/ssh ~/.ssh
@@ -41,10 +35,10 @@ fi
 # For Android Compile
 echo "2. Install android compile tools"
 sudo apt-get install git-core gitk gnupg flex bison gperf build-essential \
-  zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev \
-  libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev:i386 \
+  zip curl libc6-dev libncurses5-dev x11proto-core-dev \
+  libx11-dev libreadline6-dev libgl1-mesa-dev \
   g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown \
-  libxml2-utils xsltproc zlib1g-dev:i386 gcc-4.4 g++-4.4 \
+  libxml2-utils xsltproc zlib1g-dev gcc-4.4 g++-4.4 \
   gcc-4.4-multilib g++-4.4-multilib
 
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 300
@@ -151,9 +145,3 @@ if [ -f install_flash_player* ]; then
     sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
     rm -r usr libflashplayer.so
 fi
-
-echo "16. Install Nvidia Graphic support"
-sudo add-apt-repository ppa:bumblebee/stable
-sudo add-apt-repository ppa:ubuntu-x-swat/x-updates
-sudo apt-get update
-sudo apt-get install bumblebee -y
