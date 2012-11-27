@@ -99,8 +99,8 @@ sudo apt-get remove ibus -y
 sudo apt-get install im-switch fcitx fcitx-config-gtk fcitx-table-all -y
 im-switch -s fcitx -z default
 if [ -d ~/.config ]; then
-	rm -r ~/.config/fcitx
-	ln -s ~/Backup/config/fcixt ~/.config/fcitx
+	rm -rf ~/.config/fcitx
+	ln -s ~/Backup/config/fcitx ~/.config/fcitx
 fi
 
 echo "12. Set some misc"

@@ -1,3 +1,47 @@
+[Hotkey]
+# Trigger Input Method
+TriggerKey=CTRL_SPACE
+# Extra key for trigger input method
+# Available Value:
+# R_CTRL R_SHIFT L_SHIFT L_CTRL ALT_L_SHIFT ALT_R_SHIFT CTRL Both SHIFT Both Disabled
+SwitchKey=R_SHIFT
+# Activate input method
+ActivateKey=
+# Inactivate Input Method
+InactivateKey=
+# Enable Hotkey to scroll Between Input Method
+# Available Value:
+# True False
+IMSwitchKey=True
+# Scroll between Input Method
+# Available Value:
+# CTRL_SHIFT ALT_SHIFT CTRL_SUPER ALT_SUPER
+IMSwitchHotkey=ALT_SHIFT
+# Press Switch Key twice to Change Mode
+# Available Value:
+# True False
+DoubleSwitchKey=False
+# Interval of Two Key Input
+TimeInterval=250
+# Switching Virtual Keyboard
+VKSwitchKey=CTRL_ALT_B
+# Switching Remind Mode
+RemindSwitchKey=
+# Switching Full Width Character Mode
+FullWidthSwitchKey=
+# Switch Full Width Punc Mode
+PuncSwitchKey=CTRL_.
+# Prev Page
+PrevPageKey=-
+# Next Page
+NextPageKey==
+# Choose Second and Third Candidate Word
+SecondThirdCandWordKey=
+# Saving All Config and Input History
+SaveAllKey=CTRL_ALT_S
+# Switch Embeded Preedit
+SwitchPreedit=CTRL_ALT_P
+
 [Program]
 # Seconds sleep before fcitx really start
 DelayStart=0
@@ -7,19 +51,11 @@ DelayStart=0
 ShareStateAmongWindow=No
 # Default Input Method State
 # Available Value:
-# Close Inactive Active
-DefaultInputMethodState=Close
-# It's the first time Fcitx Start.
-# Available Value:
-# True False
-FirstRun=False
-# Use first input method as inactive state
-# Available Value:
-# True False
-FirstAsInactive=False
+# Inactive Active
+DefaultInputMethodState=Inactive
 
 [Output]
-# Use English Punc After a Number
+# Type half width Punc After a Number
 # Available Value:
 # True False
 HalfPuncAfterNumber=True
@@ -30,8 +66,8 @@ EnterAction=Commit
 # Disable Paging in Remind Mode
 # Available Value:
 # True False
-RemindModeDisablePaging=True
-# Send inputed Text if Switch to English Mode
+RemindModeDisablePaging=False
+# Send typed raw text if Switch to inactive Mode
 # Available Value:
 # True False
 SendTextWhenSwitchEng=False
@@ -41,16 +77,16 @@ CandidateWordNumber=9
 # Available Value:
 # True False
 PhraseTips=True
+# Do not commit preedit text when unfocus a window
+# Available Value:
+# True False
+DontCommitPreeditWhenUnfocus=True
 
 [Appearance]
 # Show Input Window After Trigger Input Mode
 # Available Value:
 # True False
 ShowInputWindowAfterTriggering=False
-# Show Point After Index
-# Available Value:
-# True False
-ShowPointAfterIndex=True
 # Show Input Speed
 # Available Value:
 # True False
@@ -63,44 +99,8 @@ ShowVersion=False
 # Available Value:
 # True False
 HideInputWindowWhenOnlyPreeditString=False
-# Do not show input window if there is one one candidate (Hide when only preedit string must be selected)
+# Do not show input window if there is only one candidate (Hide when only preedit string must be selected)
 # Available Value:
 # True False
 HideInputWindowWhenOnlyOneCandidate=False
-
-[Hotkey]
-# Hot key of Triggering Input Method
-TriggerKey=CTRL_SPACE
-# Enable Left Ctrl + Left Shift to Switch Between Input Method
-# Available Value:
-# True False
-IMSwitchKey=True
-# Hotkey of Switching Chinese and English Mode
-# Available Value:
-# R_CTRL R_SHIFT L_SHIFT L_CTRL ALT_L_SHIFT ALT_R_SHIFT Disabled
-SwitchKey=L_SHIFT
-# Double click Switch Key to Change Mode
-# Available Value:
-# True False
-DoubleSwitchKey=False
-# Interval of Two Key Input
-TimeInterval=250
-# Hotkey of Switching Virtual Keyboard
-VKSwitchKey=CTRL_ALT_K
-# Hotkey of Switching Remind Mode
-RemindSwitchKey=
-# Hotkey of Switching Full Width Character Mode
-FullWidthSwitchKey=SHIFT_SPACE
-# Hotkey of Switch Full Width Punc Mode
-PuncSwitchKey=ALT_SPACE
-# Hotkey of Going Prev Page
-PrevPageKey=-
-# Hotkey of Going Next Page
-NextPageKey==
-# Hotkey to Choose Second and Third Candidate Word
-SecondThirdCandWordKey=CTRL
-# Hotkey of Saving All Config and Input History
-SaveAllKey=CTRL_ALT_S
-# Hotkey of Switch Embeded Preedit
-SwitchPreedit=CTRL_ALT_P
 
