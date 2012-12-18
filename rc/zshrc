@@ -78,9 +78,9 @@ zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
 zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 
 #命令别名
-alias cp='cp -i'
+alias cp='cp -iv'
 alias mv='mv -i'
-alias rm='rm -i'
+alias rm='rm -if'
 alias ls='ls -F --color=auto'
 alias ll='ls -al'
 alias grep='grep --color=auto'
@@ -255,4 +255,8 @@ $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_NO_COLOUR '
 
 if [ -f ~/.rc/bash_aliases ]; then
     . ~/.rc/bash_aliases
+fi
+
+if [ -f ~/.rc/gitrc_zsh ]; then
+    . ~/.rc/gitrc_zsh
 fi
