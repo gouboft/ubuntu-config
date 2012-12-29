@@ -1,6 +1,7 @@
 Host tulip
 	Hostname tulip
 	Port 8079
+	IdentityFile ~/.ssh/jbs/id_rsa
 	User jbs
 
 Host jbssdk
