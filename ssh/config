@@ -2,3 +2,9 @@ Host tulip
 	Hostname tulip
 	Port 8079
 	User jbs
+
+Host jbssdk
+	Hostname 124.42.28.171
+	Port 8082
+	IdentityFile ~/.ssh/letou/gpse
+	User git

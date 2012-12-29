@@ -1,0 +1,10 @@
+Host jbssdk
+Hostname 124.42.28.171
+Port 8082
+IdentityFile ~/.ssh/gpse
+User git
+
+
+
+
+repo init -u jbssdk:jbssdk/platform/manifest.git -b infotm-camellia --repo-url jbssdk:repo
