@@ -1,4 +1,11 @@
 # fastboot protocol on crespo/crespo4g (Nexus S)
-SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0600", OWNER="link"
+SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0600", OWNER="bo"
 # usbboot protocol on Sony Xperia (Lt25i)
-SUBSYSTEM=="usb", ATTR{idVendor}=="0fce", MODE="0600", OWNER="link"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0fce", MODE="0600", OWNER="bo"
+# usbboot protocol on Qualcomm (QRD8x25)
+SUBSYSTEM=="usb", ATTR{idVendor}=="05c6", ATTR{idProduct}=="9025", MODE="0600", OWNER="bo"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0600", OWNER="bo"
+# usbboot protocal on Rockchip rk3066
+# restart udev command: udevadm control --reload-rules
+# Edit $HOME/.android/adb_usb.ini, add 0x2207 at the end of the file
+SUBSYSTEM=="usb", ATTR{idVendor}=="2207", MODE="0666", OWNER="bo"
