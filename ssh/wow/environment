@@ -1,3 +1,0 @@
-SSH_AUTH_SOCK=/tmp/ssh-IrHMCXgK5860/agent.5860; export SSH_AUTH_SOCK;
-SSH_AGENT_PID=5862; export SSH_AGENT_PID;
-#echo Agent pid 5862;

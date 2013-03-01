@@ -9,3 +9,9 @@ Host jbssdk
 	Port 8082
 	IdentityFile ~/.ssh/letou/gpse
 	User git
+
+Host github.com
+	Hostname github.com
+	IdentityFile ~/.ssh/github/id_rsa
+	PreferredAuthentications publickey
+	User gouboft
