@@ -1,0 +1,11 @@
+#!/bin/bash
+
+MountDir=`ls /media/`
+if [ "$MountDir" == "" ]; then
+	echo -e "\033[0;31;1mNo media mounted!\033[0m"
+	exit
+else
+	echo -e "I will umount \033[44;31;1m$MountDir\033[0m in /media"
+fi
+
+umount /media/$MountDir
