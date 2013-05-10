@@ -1,46 +1,39 @@
 # Android Dir
-ANDROID_DIR=~/Source/allwinner/ics/rearview
-#ANDROID_DIR=~/Source/infoTM/jb
-ANDROID_DEVICE_DIR=$ANDROID_DIR/device/softwinner
-#ANDROID_DEVICE_DIR=$ANDROID_DIR/device/infotm
-ANDROID_OUT_DIR=$ANDROID_DIR/out/target/product
-ANDROID_PACKAGES_APPS_DIR=$ANDROID_DIR/packages/apps
-ANDROID_FRAMEWORKS_BASE_DIR=$ANDROID_DIR/frameworks/base
-ANDROID_DEVICE_AUDIO_DIR=$ANDROID_DEVICE_DIR/common/hardware/audio
+ALLWINNER_DIR=~/Source/allwinner
+INFOTM_DIR=~/Source/infoTM
 
 # Kernel Dir
-KERNEL_DIR=$ANDROID_DIR/vendor/softwinner/linux-3.0
-#KERNEL_DIR=$ANDROID_DIR/bootable/linux-3.0.8
-KERNEL_DRIVERS_DIR=$KERNEL_DIR/drivers
-KERNEL_ARM_DIR=$KERNEL_DIR/arch/arm
-KERNEL_ARM_CONFIGS_DIR=$KERNEL_ARM_DIR/configs
-
-VENDOR_DIR=$ANDROID_DIR/vendor/softwinner
+KERNEL_ALLWINNER_DIR=vendor/softwinner/linux-3.*
+KERNEL_INFOTM_DIR=bootable/linux-3.0.8
+KERNEL_DRIVERS_ALLWINNER_DIR=$KERNEL_ALLWINNER_DIR/drivers
+KERNEL_DRIVERS_INFOTM_DIR=$KERNEL_INFOTM_DIR/drivers
 
 # Allwinner
-TOOLS_DIR=$VENDOR_DIR/tools/pack/chips/sun4i/configs/crane
-TOOLS_PACK_DIR=$VENDOR_DIR/tools/pack
+AUDIO_DIR=device/softwinner/common/hardware/audio
+TOOLS_DIR=vendor/softwinner/tools/pack/chips/*/configs
+TOOLS_PACK_DIR=vendor/softwinner/tools/pack
 
 ##########################################################
+alias ca='cd $ALLWINNER_DIR'
+alias ci='cd $INFOTM_DIR'
 
-alias a='cd $ANDROID_DIR'
-alias ad='cd $ANDROID_DEVICE_DIR'
-alias ao='cd $ANDROID_OUT_DIR'
-alias ap='cd $ANDROID_PACKAGES_APPS_DIR'
-alias af='cd $ANDROID_FRAMEWORKS_BASE_DIR'
+alias sen='. build/envsetup.sh; AT=$(pwd)'
+alias a='cd $AT'
+alias ao='cd $OUT'
+alias ad='if [ -d $AT/device/infotm ]; then cd $AT/device/infotm; else cd $AT/device/softwinner; fi'
+alias adt='if [ -d $AT/device/infotm ]; then cd $AT/device/*/$TARGET_PRODUCT; else cd $DEVICE; fi' # only take effect After execute lunch
+alias k='if [ -d $AT/$KERNEL_ALLWINNER_DIR ]; then cd $AT/$KERNEL_ALLWINNER_DIR; else cd $AT/$KERNEL_INFOTM_DIR; fi'
+alias kd='if [ -d $AT/$KERNEL_DRIVERS_ALLWINNER_DIR ]; then cd $AT/$KERNEL_DRIVERS_ALLWINNER_DIR; else cd $AT/$KERNEL_DRIVERS_INFOTM_DIR; fi'
 
-alias k='cd $KERNEL_DIR'
-alias kd='cd $KERNEL_DRIVERS_DIR'
-alias ka='cd $KERNEL_ARM_DIR'
-alias kac='cd $KERNEL_ARM_CONFIGS_DIR'
+alias ap='cd $AT/packages/apps'
+alias af='cd $AT/frameworks/base'
+alias ar='cd $AT/.repo/manifests'
 
-alias v='cd $VENDOR_DIR'
-alias at='cd $TOOLS_DIR'
-alias atp='cd $TOOLS_PACK_DIR'
-alias cout='cd $OUT'
-alias ct='cd $T'
+# Allwinner
+alias aa='cd $AT/$AUDIO_DIR'
+alias at='cd $AT/$TOOLS_DIR'
+alias atp='cd $AT/$TOOLS_PACK_DIR'
 
-alias aa='cd $ANDROID_DEVICE_AUDIO_DIR'
 
 #Cross compiler
 export PATH=/opt/toolchain/bin:$PATH

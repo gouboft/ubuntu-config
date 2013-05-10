@@ -3,7 +3,6 @@
 alias s='cd ~/Source'
 alias D='cd ~/Downloads'
 alias d='cd ~/Desktop'
-alias W='cd ~/Work'
 
 alias gp='grep -nsr'
 alias emd='cd ~/.emacs.d/emacs-config'
@@ -34,7 +33,6 @@ alias sc='scribes'
 # set my environment
 export d=~/Desktop
 export D=~/Downloads
-export W=~/Work
 hash -d d="/home/bo/Desktop"
 hash -d D="~/Downloads"
 
