@@ -12,6 +12,13 @@ Host jbssdk
 
 Host github.com
 	Hostname github.com
-	IdentityFile ~/.ssh/github/id_rsa
+	IdentityFile ~/.ssh/gerrit/id_rsa
 	PreferredAuthentications publickey
 	User gouboft
+
+Host gerritr
+	Hostname tulip
+	Port 29418
+	User link
+	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/gerrit/id_rsa
