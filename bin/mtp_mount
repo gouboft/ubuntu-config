@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ ! -d /media/mtp ]; then
+	sudo mkdir /media/mtp
+	sudo chmod 775 /media/mtp
+fi
+
+sudo mtpfs -o allow_other /media/mtp
