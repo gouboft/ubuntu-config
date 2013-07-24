@@ -6,3 +6,6 @@ if [ ! -d /media/mtp ]; then
 fi
 
 sudo mtpfs -o allow_other /media/mtp
+
+# Install mtp tools:
+# sudo apt-get install mtpfs libfuse-dev libmad0-dev
