@@ -4,6 +4,12 @@ Host tulip
 	IdentityFile ~/.ssh/jbs/id_rsa
 	User jbs
 
+Host venus
+	Hostname venus
+	Port 8079
+	IdentityFile ~/.ssh/jbs/id_rsa
+	User jbs
+
 Host jbssdk
 	Hostname 124.42.28.171
 	Port 8082
@@ -20,5 +26,4 @@ Host gerritr
 	Hostname tulip
 	Port 29418
 	User link
-	PreferredAuthentications publickey
 	IdentityFile ~/.ssh/gerrit/id_rsa
