@@ -4,7 +4,6 @@ alias s='cd ~/Source'
 alias D='cd ~/Downloads'
 alias d='cd ~/Desktop'
 
-alias gp='grep -nsr'
 alias emd='cd ~/.emacs.d/emacs-config'
 alias fd='find . -name' 
 alias cp='cp -v'
@@ -13,6 +12,31 @@ alias LS='ls'
 alias b='cd ..'
 alias f='cd -'
 alias CD='cd'
+
+function gp()
+{
+    grep -nsr "$@" .
+}
+
+function agp()
+{
+    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' -o -name '*.java' -o -name '*.aidl' -o -name '*.xml' -o -name '*.mk' \) -print0 | xargs -0 grep --color -n "$@"
+}
+
+function jgp()
+{
+    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$@"
+}
+
+function cgp()
+{
+    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep --color -n "$@"
+}
+
+function rgp()
+{
+    for dir in `find . -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*.xml' -print0 | xargs -0 grep --color -n "$@"; done;
+}
 
 # for work
 if [ -f ~/.rc/bash_work ]; then
@@ -75,3 +99,25 @@ export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
 
 alias zhcon='zhcon --utf8 --drv=vga'
+
+#Mark
+export MARKPATH=$HOME/.marks
+function jump { 
+	    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+function mark { 
+	    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+function unmark { 
+	    rm -i "$MARKPATH/$1"
+}
+function marks {
+	    ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+_completemarks() {
+	  local curw=${COMP_WORDS[COMP_CWORD]}
+	    local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+	      COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+	        return 0
+}
+complete -F _completemarks jump unmark
