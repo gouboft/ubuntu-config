@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ "$1" != "386" ]; then
+	sudo apt-get install libncurses5-dev -y
+else
+	sudo apt-get install libncurses5-dev:i386 -y
+fi
