@@ -115,6 +115,7 @@ if [ "$RET" != "zh_CN.GBK GBK" ]; then
 fi
 sudo dpkg-reconfigure -force locales > /dev/null
 sudo apt-get install gtk2-engines-pixbuf -y # remove warning when open GTK software in shell
+sudo apt-get install gconf-editor -y # used to set the app which use the gtk library, such as iptux
 
 echo "13. Install Beyond compare"
 sudo dpkg -i ~/Backup/documents/bcompare*.deb
