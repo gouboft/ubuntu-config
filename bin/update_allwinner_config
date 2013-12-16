@@ -1,0 +1,35 @@
+# Check the evnironment
+test $TARGET_PRODUCT
+if [ $? -eq 1 ]; then
+	echo -e '\033[0;31;1mYou mast setup the environment first\033[0m'
+    	. build/envsetup.sh; lunch
+else
+	echo -e '\033[0;32;1mYou have setup the environment\033[0m'
+fi
+echo ""
+
+# Check the device
+ISON=$(adb devices | grep 08 | sed 's/\b\w*\b\tdevice/on/g')
+if [ "$ISON" != "on" ]; then
+	echo "No device connected"
+	exit;
+fi
+
+echo "Start to update the config file: sys_config.fex"
+adb remount > /dev/null
+adb shell mkdir /mnt2
+
+echo "1. mount nanda"
+adb shell mount -t vfat /dev/block/nanda /mnt2
+sleep 1
+
+echo "2. push config file"
+adb push ./vendor/softwinner/tools/pack/out/config.fex /mnt2/script.bin
+sleep 1
+
+echo "3. umount nanda"
+adb shell umount /mnt2
+sleep 1
+
+echo "4. reboot system"
+adb reboot
