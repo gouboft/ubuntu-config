@@ -1,0 +1,9 @@
+# Used to kill python
+if [ $1 == "" ]; then
+	PID=$(ps -e | grep python | awk -F " " '{print $1}')
+else
+	PID=$(ps -e | grep $1 | awk -F " " '{print $1}')
+fi
+
+kill $PID
+echo "$PID is been killed"
