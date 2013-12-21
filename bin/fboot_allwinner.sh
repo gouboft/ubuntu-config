@@ -95,7 +95,7 @@ if [ "$TODOFLASH" != "no" ]; then
 
 	# Flash recovery partition
     	if [ "$Inputud" != "n" ]; then
-		echo $PASSWD | sudo -S fastboot flash data $RECOVERYIMG
+		echo $PASSWD | sudo -S fastboot flash recovery $RECOVERYIMG
 		sleep 2
 		echo "Recovery flash success"
 		echo ""
