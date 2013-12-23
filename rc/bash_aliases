@@ -65,6 +65,8 @@ export PATH=/opt/toolchain/arm-eabi-4.5.0/bin:$PATH
 
 # Add mysql path
 export PATH=/usr/local/mysql/bin:$PATH
+# android studio
+export PATH=~/android/android-studio/bin:$PATH
 
 # My function
 function grp()
