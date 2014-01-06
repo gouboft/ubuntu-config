@@ -9,7 +9,7 @@ fi
 echo ""
 
 # Check the device
-ISON=$(adb devices | grep 08 | sed 's/\b\w*\b\tdevice/on/g')
+ISON=$(adb devices | grep 0 | sed 's/\b\w*\b\tdevice/on/g')
 if [ "$ISON" != "on" ]; then
 	echo "No device connected"
 	exit;
