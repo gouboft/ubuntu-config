@@ -65,9 +65,9 @@ read Inputs
 if [ "$Inputb" == "n" -a "$Inputbl" == "n" -a "$Inputud" == "n" -a "$Inputs" == "n" ]; then 
 	TODOFLASH="no"
 else
-	ISON=$(adb devices | grep 08 | sed 's/\b\w*\b\tdevice/on/g')
+	ISON=$(adb devices | grep 0 | sed 's/\b\w*\b\tdevice/on/g')
 	if [ "$ISON" == "on" ]; then
-		adb reboot bootloader
+		adb reboot $FASTBOOT_NAME
 	else
 		echo "No device found"
 	fi
