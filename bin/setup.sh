@@ -77,7 +77,7 @@ echo "6. Install filezilla"
 sudo apt-get install filezilla -y
 
 echo "7. Install archive tools"
-sudo apt-get install unzip zip rar unrar p7zip -y
+sudo apt-get install unzip zip rar unrar p7zip unar -y
 sudo apt-get install convmv -y  # convert the file name coding: convmv -f UTF-8 -t GBK --notest utf8
 
 echo "8. Install System tools"
