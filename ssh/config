@@ -23,7 +23,35 @@ Host github.com
 	User gouboft
 
 Host gerritr
-	Hostname tulip
+	Hostname venus
 	Port 29418
 	User link
 	IdentityFile ~/.ssh/gerrit/id_rsa
+
+Host 61.143.53.198
+	Hostname 61.143.53.198
+	User JinBaiSheng
+	IdentityFile ~/.ssh/allwinner/id_rsa
+
+Host code.csdn.net
+	Hostname code.csdn.net
+	IdentityFile ~/.ssh/csdn/id_rsa
+	PreferredAuthentications publickey
+	User gouboft
+
+Host www.rockchip.com.cn
+	Hostname www.rockchip.com.cn
+	IdentityFile ~/.ssh/rockchip/id_rsa
+	User git
+
+Host gongj
+	Hostname gongjun98.xicp.net
+	IdentityFile ~/.ssh/jbs/id_rsa
+	PreferredAuthentications publickey
+	User server
+
+Host home
+	Hostname goubo.myvnc.com
+	IdentityFile ~/.ssh/jbs/id_rsa
+	PreferredAuthentications publickey
+	User link
