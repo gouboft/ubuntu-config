@@ -1,0 +1,11 @@
+echo "1. unity support test"
+/usr/lib/nux/unity_support_test -p
+
+echo ""
+echo "2. glxinfo check"
+glxinfo | grep "direct rendering"
+
+echo ""
+echo "3. glmark2 test"
+#sudo apt-get install glmark2
+glmark2
