@@ -27,7 +27,7 @@ alias kd='if [ -d $AT/$KERNEL_DRIVERS_ALLWINNER_DIR ]; then cd $AT/$KERNEL_DRIVE
 
 alias ap='cd $AT/packages/apps'
 alias af='cd $AT/frameworks/base'
-alias ar='cd $AT/.repo/manifests'
+alias am='cd $AT/.repo/manifests'
 
 # Allwinner
 alias aa='cd $AT/$AUDIO_DIR'
