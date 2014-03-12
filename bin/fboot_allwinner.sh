@@ -67,7 +67,7 @@ if [ "$Inputb" == "n" -a "$Inputbl" == "n" -a "$Inputud" == "n" -a "$Inputs" == 
 else
 	ISON=$(adb devices | grep 0 | sed 's/\b\w*\b\tdevice/on/g')
 	if [ "$ISON" == "on" ]; then
-		adb reboot $FASTBOOT_NAME
+		adb shell reboot $FASTBOOT_NAME
 	else
 		echo "No device found"
 	fi
