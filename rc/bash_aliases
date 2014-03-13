@@ -1,6 +1,6 @@
 # some more aliases
 # for short alias
-alias s='cd ~/Source'
+alias so='cd ~/Source'
 alias D='cd ~/Downloads'
 alias d='cd ~/Desktop'
 
@@ -92,6 +92,7 @@ alias cl5='cl ../../../../..'
 alias cl6='cl ../../../../../..'
 alias cl7='cl ../../../../../../..'
 alias cl8='cl ../../../../../../../..'
+alias cl9='cl ../../../../../../../../..'
 alias senv='. build/envsetup.sh; lunch'
 
 #set java environment
