@@ -14,6 +14,10 @@ if [ -d ~/.vim/bin ]; then
 	export PATH=~/.vim/bin:$PATH
 fi
 
+if [ -f ~/.rc/z.sh ]; then
+	. ~/.rc/z.sh
+fi
+
 . ~/.rc/bash_completion_tmux.sh
 
 export LANG=en_US.UTF-8
