@@ -1,7 +1,7 @@
 # Check the evnironment
 test $TARGET_PRODUCT
 if [ $? -eq 1 ]; then
-	echo -e '\033[0;31;1mYou mast setup the environment first\033[0m'
+	echo -e '\033[0;31;1mYou must setup the environment first\033[0m'
     	. build/envsetup.sh; lunch
 else
 	echo -e '\033[0;32;1mYou have setup the environment\033[0m'
