@@ -34,7 +34,7 @@ fi
 
 # For Android Compile
 echo "2. Install android compile tools"
-sudo apt-get install git-core gitk gnupg flex bison gperf build-essential \
+sudo apt-get install git gitk gnupg flex bison gperf build-essential \
   zip curl libc6-dev libncurses5-dev x11proto-core-dev \
   libx11-dev libreadline6-dev libgl1-mesa-dev \
   g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown \
@@ -45,8 +45,6 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 300
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 100
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 300
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 100
-
-sudo apt-get -f install
 
 echo "3. Install Emacs"
 sudo apt-get install emacs mew -y
@@ -77,7 +75,7 @@ echo "6. Install filezilla"
 sudo apt-get install filezilla -y
 
 echo "7. Install archive tools"
-sudo apt-get install unzip zip rar unrar p7zip unar -y
+sudo apt-get install unar -y
 sudo apt-get install convmv -y  # convert the file name coding: convmv -f UTF-8 -t GBK --notest utf8
 
 echo "8. Install System tools"

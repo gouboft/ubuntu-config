@@ -1,8 +1,11 @@
+# Ubuntu 3D test command
+
 echo "1. unity support test"
 /usr/lib/nux/unity_support_test -p
 
 echo ""
 echo "2. glxinfo check"
+#sudo apt-get install mesa-utils
 glxinfo | grep "direct rendering"
 
 echo ""
