@@ -20,6 +20,12 @@
 
 # Set up prog to be the path of this script, including following symlinks,
 # and set up progdir to be the fully-qualified pathname of its directory.
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_02
+export JRE_HOME=/usr/lib/jvm/jdk1.7.0_02
+export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+
 prog="$0"
 while [ -h "${prog}" ]; do
     newProg=`/bin/ls -ld "${prog}"`
@@ -42,7 +48,7 @@ prog="${progdir}"/`basename "${prog}"`
 cd "${oldwd}"
 
 
-jarfile=apktool.jar
+jarfile=apktool_2.0.0b9.jar
 libdir="$progdir"
 if [ ! -r "$libdir/$jarfile" ]
 then
