@@ -1,12 +1,12 @@
 # Android Dir
 ALLWINNER_DIR=~/Source/allwinner
-INFOTM_DIR=~/Source/infoTM
+ROCKCHIP_DIR=~/Source/rockchip
 
 # Kernel Dir
 KERNEL_ALLWINNER_DIR=vendor/softwinner/linux-3.*
-KERNEL_INFOTM_DIR=bootable/linux-3.0.8
+KERNEL_ROCKCHIP_DIR=kernel
 KERNEL_DRIVERS_ALLWINNER_DIR=$KERNEL_ALLWINNER_DIR/drivers
-KERNEL_DRIVERS_INFOTM_DIR=$KERNEL_INFOTM_DIR/drivers
+KERNEL_DRIVERS_ROCKCHIP_DIR=$KERNEL_INFOTM_DIR/drivers
 
 # Allwinner
 AUDIO_DIR=device/softwinner/common/hardware/audio
@@ -15,15 +15,15 @@ TOOLS_PACK_DIR=vendor/softwinner/tools/pack
 
 ##########################################################
 alias ca='cd $ALLWINNER_DIR'
-alias ci='cd $INFOTM_DIR'
+alias cr='cd $ROCKCHIP_DIR'
 
 alias sen='. build/envsetup.sh; AT=$(pwd)'
 alias a='cd $AT'
 alias ao='cd $OUT'
 alias ad='if [ -d $AT/device/infotm ]; then cd $AT/device/infotm; else cd $AT/device/softwinner; fi'
 alias adt='if [ -d $AT/device/infotm ]; then cd $AT/device/*/$TARGET_PRODUCT; else cd $DEVICE; fi' # only take effect After execute lunch
-alias k='if [ -d $AT/$KERNEL_ALLWINNER_DIR ]; then cd $AT/$KERNEL_ALLWINNER_DIR; else cd $AT/$KERNEL_INFOTM_DIR; fi'
-alias kd='if [ -d $AT/$KERNEL_DRIVERS_ALLWINNER_DIR ]; then cd $AT/$KERNEL_DRIVERS_ALLWINNER_DIR; else cd $AT/$KERNEL_DRIVERS_INFOTM_DIR; fi'
+alias k='if [ -d $AT/$KERNEL_ALLWINNER_DIR ]; then cd $AT/$KERNEL_ALLWINNER_DIR; else cd $AT/$KERNEL_ROCKCHIP_DIR; fi'
+alias kd='if [ -d $AT/$KERNEL_DRIVERS_ALLWINNER_DIR ]; then cd $AT/$KERNEL_DRIVERS_ALLWINNER_DIR; else cd $AT/$KERNEL_DRIVERS_ROCKCHIP_DIR; fi'
 
 alias ap='cd $AT/packages/apps'
 alias af='cd $AT/frameworks/base'
