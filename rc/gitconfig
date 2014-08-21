@@ -6,7 +6,7 @@
 	email = link@gps-e.com
 [merge]
 	summary = true
-	tool = vimdiff
+	tool = bc3
 [diff]
 	renames = copy
 	wordregex = "[[:alnum:]_]+|[^[:space:]]"
