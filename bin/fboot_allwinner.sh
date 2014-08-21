@@ -39,7 +39,7 @@ check_environment
 check_cpu_type
 
 #sudo password
-PASSWD=jkl
+PASSWD=" "
 BOOTIMG="out/target/product/$DIR/boot.img"
 SYSTEMIMG="out/target/product/$DIR/system.img"
 RECOVERYIMG="out/target/product/$DIR/recovery.img"
@@ -79,7 +79,7 @@ echo -e '\033[0;31;1m==================== Fastboot Start ==================\033[
 if [ "$TODOFLASH" != "no" ]; then
 	# Flash boot partition
 	if [ "$Inputb" != "n" ]; then
-		echo $PASSWD | sudo -S fastboot flash boot $BOOTIMG
+		echo " " | sudo -S fastboot flash boot $BOOTIMG
 		sleep 2
 		echo "Boot flash success"
 		echo ""
@@ -87,7 +87,7 @@ if [ "$TODOFLASH" != "no" ]; then
 
 	# Flash bootloader partition
     	if [ "$Inputbl" != "n" ]; then
-		echo $PASSWD | sudo -S fastboot flash $BOOTLOADER_PART_NAME $BOOTLOADERIMG
+		echo " " | sudo -S fastboot flash $BOOTLOADER_PART_NAME $BOOTLOADERIMG
 		sleep 2
 		echo "Bootloader flash success"
 		echo ""
@@ -95,7 +95,7 @@ if [ "$TODOFLASH" != "no" ]; then
 
 	# Flash recovery partition
     	if [ "$Inputud" != "n" ]; then
-		echo $PASSWD | sudo -S fastboot flash recovery $RECOVERYIMG
+		echo " "| sudo -S fastboot flash recovery $RECOVERYIMG
 		sleep 2
 		echo "Recovery flash success"
 		echo ""
@@ -103,14 +103,14 @@ if [ "$TODOFLASH" != "no" ]; then
 
 	# Flash system partition
     	if [ "$Inputs" != "n" ]; then
-		echo $PASSWD | sudo -S fastboot flash system $SYSTEMIMG
+		echo " "| sudo -S fastboot flash system $SYSTEMIMG
 		sleep 2
 		echo "System flash success"
 		echo ""
     	fi
 	
 	# exit fastboot mode and reboot machine
-	echo $PASSWD | sudo -S fastboot reboot
+	echo " " | sudo -S fastboot reboot
 else
 	echo "Nothing to be done"
 fi

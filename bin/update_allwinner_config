@@ -17,18 +17,18 @@ fi
 
 echo "Start to update the config file: sys_config.fex"
 adb remount > /dev/null
-adb shell mkdir /mnt2
+adb shell mkdir /data/nanda > /dev/null
 
 echo "1. mount nanda"
-adb shell mount -t vfat /dev/block/nanda /mnt2
+adb shell mount -t vfat /dev/block/nanda /data/nanda
 sleep 1
 
 echo "2. push config file"
-adb push ./vendor/softwinner/tools/pack/out/config.fex /mnt2/script.bin
+adb push ./vendor/softwinner/tools/pack/out/sys_config.bin /data/nanda/script.bin
 sleep 1
 
 echo "3. umount nanda"
-adb shell umount /mnt2
+adb shell umount /data/nanda
 sleep 1
 
 echo "4. reboot system"
