@@ -37,8 +37,11 @@ alias atp='cd $AT/$TOOLS_PACK_DIR'
 
 #Cross compiler
 export PATH=/opt/toolchain/bin:$PATH
+
+#android studio
 export PATH=~/android/android-studio/bin:$PATH
 
-#android sdk
-#export NDK_ROOT=~/android/android-ndk-r9d
+#android ndk
+export PATH=~/android/android-ndk-r9d:$PATH
+export NDK_ROOT=~/android/android-ndk-r9d
 
