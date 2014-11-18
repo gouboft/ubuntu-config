@@ -18,8 +18,7 @@ Host jbssdk
 
 Host github.com
 	Hostname github.com
-	IdentityFile ~/.ssh/gerrit/id_rsa
-	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/csdn/id_rsa
 	User gouboft
 
 Host gerritr

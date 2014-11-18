@@ -62,6 +62,7 @@ hash -d D="~/Downloads"
 
 # Add toolchain for compile
 export PATH=/opt/toolchain/arm-eabi-4.5.0/bin:$PATH
+export PATH=/opt/toolchain/gcc-linaro/bin:$PATH
 
 # Add mysql path
 export PATH=/usr/local/mysql/bin:$PATH
