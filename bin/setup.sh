@@ -1,4 +1,5 @@
 #!/bin/bash
+# For Ubuntu 14.04
 
 # Do some prepare 
 sudo cp ~/Backup/config/configs/51-android.rules /etc/udev/rules.d/
@@ -34,20 +35,12 @@ fi
 
 # For Android Compile
 echo "2. Install android compile tools"
-sudo apt-get install git gitk gnupg flex bison gperf build-essential \
-  zip curl libc6-dev libncurses5-dev x11proto-core-dev \
-  libx11-dev libreadline6-dev libgl1-mesa-dev \
-  g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown \
-  libxml2-utils xsltproc zlib1g-dev gcc-4.4 g++-4.4 \
-  gcc-4.4-multilib g++-4.4-multilib
-
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 300
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 100
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 300
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 100
+sudo apt-get install bison g++-multilib git gperf libxml2-utils flex -y
+# for linux menuconfig
+sudo apt-get install libncurses5-dev
 
 echo "3. Install Emacs"
-sudo apt-get install emacs mew -y
+sudo apt-get install emacs23 mew -y
 if [ ! -e ~/.emacs.d ]; then
     mkdir ~/.emacs.d
 fi
@@ -79,7 +72,7 @@ sudo apt-get install unar -y
 sudo apt-get install convmv -y  # convert the file name coding: convmv -f UTF-8 -t GBK --notest utf8
 
 echo "8. Install System tools"
-sudo apt-get install ckermit tweak samba smbclient smbfs ssh -y
+sudo apt-get install ckermit tweak samba smbclient ssh -y
 
 # Maximize gnome-terminal when it start up
 echo "9. Set terminal"
@@ -94,13 +87,10 @@ sudo apt-get install uzbl mutt -y # uzbl: Browser, mutt: Mail client
 sudo apt-get install gparted -y # gparted: A disk manage software
 
 echo "11. Install Fcitx Input Method"
-sudo apt-get remove ibus -y
 sudo apt-get install im-switch fcitx fcitx-config-gtk fcitx-table-all -y
 im-switch -s fcitx -z default
-if [ -d ~/.config ]; then
-	rm -rf ~/.config/fcitx
-	cp -rf ~/Backup/config/fcitx ~/.config/fcitx
-fi
+# exchange the caps lock and control key
+dconf write /org/gnome/desktop/input-sources/xkb-options "['ctrl:swapcaps']"
 
 echo "12. Set some misc"
 sudo apt-get install tree tmux -y
@@ -117,6 +107,12 @@ sudo apt-get install gtk2-engines-pixbuf -y # remove warning when open GTK softw
 sudo apt-get install gconf-editor -y # used to set the app which use the gtk library, such as iptux
 
 echo "13. Install Beyond compare"
+# replace ia32-libs
+sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0 -y
+# install old version ia32-libs
+cd ~/Backup/documents
+unar -q ia32-libs.tar.gz
+cd ia32-libs; sudo dpkg -i *.deb; cd ..; rm -r ia32-libs
 sudo dpkg -i ~/Backup/documents/bcompare*.deb
 
 echo "14. Copy all config file"
@@ -137,7 +133,8 @@ fi
 
 echo "15. Install google chrome and flash player"
 cd ~/Backup/documents/
-sudo apt-get install libnss3-1d -y
+# google chrome request
+sudo apt-get install libappindicator1 -y
 sudo dpkg -i google-chrome*.deb > /dev/null
 if [ -f install_flash_player* ]; then
     tar -xzvf install_flash_player*.gz > /dev/null 
@@ -145,3 +142,9 @@ if [ -f install_flash_player* ]; then
     sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
     rm -r usr libflashplayer.so
 fi
+
+# fix the unity control center disappear
+#sudo apt-get install unity-control-center-signon unity-control-center-unity
+
+# fix the usb canot use in vbox
+sudo gpasswd -a link vboxusers #link is a suer account
