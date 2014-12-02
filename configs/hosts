@@ -8,7 +8,5 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-192.168.1.232 tulip
-#61.144.244.31 tulip
-
-211.103.252.242 bear
+192.168.1.232 venus
+#61.144.244.31 venus

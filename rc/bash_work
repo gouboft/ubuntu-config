@@ -42,6 +42,6 @@ export PATH=/opt/toolchain/bin:$PATH
 export PATH=~/android/android-studio/bin:$PATH
 
 #android ndk
-export PATH=~/android/android-ndk-r9d:$PATH
-export NDK_ROOT=~/android/android-ndk-r9d
+#export PATH=~/android/android-ndk-r9d:$PATH
+#export NDK_ROOT=~/android/android-ndk-r9d
 
