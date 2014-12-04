@@ -37,7 +37,7 @@ fi
 echo "2. Install android compile tools"
 sudo apt-get install bison g++-multilib git gitk gperf libxml2-utils flex -y
 # for linux menuconfig
-sudo apt-get install libncurses5-dev fakeroot -y
+sudo apt-get install libncurses5-dev fakeroot libswitch-perl -y
 
 echo "3. Install Emacs"
 sudo apt-get install emacs23 mew -y
