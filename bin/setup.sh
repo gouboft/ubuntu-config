@@ -85,6 +85,7 @@ sudo apt-get install cups-pdf -y #pdf printer
 sudo apt-get install mupdf apvlv -y #pdf reader like vi control
 sudo apt-get install uzbl mutt -y # uzbl: Browser, mutt: Mail client
 sudo apt-get install gparted -y # gparted: A disk manage software
+sudo apt-get install ecryptfs-utils -y # ecryptfs
 
 echo "11. Install Fcitx Input Method"
 sudo apt-get install im-switch fcitx fcitx-config-gtk fcitx-table-all -y
