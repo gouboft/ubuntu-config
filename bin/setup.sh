@@ -53,7 +53,7 @@ fi
 
 echo "4. Install Vim"
 cd ~
-sudo apt-get install vim exuberant-ctags -y
+sudo apt-get install vim vim-gui-common exuberant-ctags -y
 if [ ! -e .vim/vimrc ]; then
     rm -rf .vim/ .vimrc
     git clone https://gouboft@github.com/gouboft/vim-config.git
