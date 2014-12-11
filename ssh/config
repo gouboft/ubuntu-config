@@ -41,7 +41,6 @@ Host code.csdn.net
 Host www.rockchip.com.cn
 	Hostname www.rockchip.com.cn
 	IdentityFile ~/.ssh/rockchip/id_rsa
-	User git
 
 Host gongj
 	Hostname gongjun98.xicp.net
