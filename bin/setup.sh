@@ -106,6 +106,7 @@ fi
 sudo dpkg-reconfigure -force locales > /dev/null
 sudo apt-get install gtk2-engines-pixbuf -y # remove warning when open GTK software in shell
 sudo apt-get install gconf-editor -y # used to set the app which use the gtk library, such as iptux
+sudo apt-get install gstreamer1.0-libde265 -y # H265 Video play
 
 echo "13. Install Beyond compare"
 # replace ia32-libs
