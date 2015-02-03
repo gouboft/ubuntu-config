@@ -1,0 +1,20 @@
+#!/bin/bash
+
+. build/envsetup.sh && lunch 
+make -j8
+
+pack
+
+CURRENT_DIR=$(pwd | awk 'BEGIN{FS="/"} {print $NF}')
+IMG_DIR_PATH=~/Desktop/Images
+
+echo "当前目录：$CURRENT_DIR"
+echo "Image目录：$HOME/image_share/$CURRENT_DIR"
+
+if [ ! -d $IMG_DIR_PATH ]; then
+    mkdir $IMG_DIR_PATH/$CURRENT_DIR
+fi
+
+mv -v vendor/softwinner/tools/pack/*.img $IMG_DIR_PATH/$CURRENT_DIR
+
+ls -hl $IMG_DIR_PATH/$CURRENT_DIR
