@@ -1,12 +1,15 @@
 #!/bin/bash
 
-MountDir=$(ls /media/$USER)
-if [ -z "$MountDir" ]; then
+MountDirs=$(ls /media/$USER)
+if [ -z "$MountDirs" ]; then
 	echo -e "\033[0;31;1mNo media mounted!\033[0m"
 	exit
-else
-	echo -e "I will umount \033[44;31;1m$MountDir\033[0m in /media/$USER"
 fi
 
-umount /media/$USER/$MountDir
-echo -e "\033[0;32;1mDone!\033[0m"
+for DIR in $MountDirs
+do
+	echo -e "I will umount \033[44;31;1m$DIR\033[0m in /media/$USER"
+	echo " " | sudo -S umount /media/$USER/$DIR > /dev/null
+	echo -e "\033[0;32;1mDone!\033[0m"
+done
+
