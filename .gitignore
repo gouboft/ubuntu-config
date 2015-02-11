@@ -1,3 +1,2 @@
-ssh/environment
-ssh/known_hosts
+ssh/
 fcitx/*
