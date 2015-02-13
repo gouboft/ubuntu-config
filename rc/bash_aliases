@@ -125,3 +125,44 @@ _completemarks() {
 	        return 0
 }
 complete -F _completemarks jump unmark
+
+
+# For open allwinner tools directory quickly
+function cdtools {
+    if [ -z $TARGET_PRODUCT ];then
+        echo -e '\033[0;31;1mYou mast setup the environment first!\033[0m'
+	. build/envsetup.sh; lunch
+    fi
+
+    croot; cd vendor/softwinner/tools
+    CONFIG_FILES=$(find . -name "sys_config.fex")
+
+    PROJECT=$(echo $TARGET_PRODUCT | awk -F "_" '{print $2}')
+
+    for CF_FILE in $CONFIG_FILES
+    do
+        CHECK=$(echo $CF_FILE | sed '/'${PROJECT}'/c OK')
+        if [ "$CHECK" == "OK" ]; then
+            if [ "$1" == "o" ]; then
+                echo -e "\033[0;32;1mFind $PROJECT sys_config.fex, now open it.\033[0m"
+                sleep 1
+                vi $CF_FILE
+                return
+            else
+                echo -e "\033[0;32;1mFind $PROJECT sys_config.fex, now cd to $PROJECT.\033[0m"
+                sleep 1
+                cd $(echo $CF_FILE | sed 's/sys_config\.fex//')
+                return
+            fi
+        fi
+    done
+
+    echo -e "\033[0;31;1mDo not find $PROJECT sys_config.fex, please check it!\033[0m"
+    echo ""
+    echo -e "Target Product is \033[0;31;1m$TARGET_PRODUCT\033[0m"
+    echo "Config files as below:"
+    for CF_FILE_ERR in $CONFIG_FILES
+    do
+        echo $CF_FILE_ERR
+    done
+}
