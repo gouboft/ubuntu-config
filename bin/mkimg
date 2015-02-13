@@ -1,20 +1,28 @@
 #!/bin/bash
 
+echo ""
+echo "Compile："
 . build/envsetup.sh && lunch 
 make -j8
 
+echo ""
+echo "Package："
 pack
 
+echo ""
+echo "Copy："
 CURRENT_DIR=$(pwd | awk 'BEGIN{FS="/"} {print $NF}')
 IMG_DIR_PATH=~/Desktop/Images
 
-echo "当前目录：$CURRENT_DIR"
-echo "Image目录：$HOME/image_share/$CURRENT_DIR"
-
-if [ ! -d $IMG_DIR_PATH ]; then
-    mkdir $IMG_DIR_PATH/$CURRENT_DIR
+if [ ! -d $IMG_DIR_PATH/$CURRENT_DIR ]; then
+    echo "No Image dir，make it：$HOME/image_share/$CURRENT_DIR"
+    mkdir -p $IMG_DIR_PATH/$CURRENT_DIR
 fi
 
+echo ""
 mv -v vendor/softwinner/tools/pack/*.img $IMG_DIR_PATH/$CURRENT_DIR
 
+echo ""
+echo "Target："
+echo "Dir：$IMG_DIR_PATH/$CURRENT_DIR"
 ls -hl $IMG_DIR_PATH/$CURRENT_DIR
