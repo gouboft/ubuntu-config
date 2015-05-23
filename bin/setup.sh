@@ -108,6 +108,10 @@ sudo apt-get install gtk2-engines-pixbuf -y # remove warning when open GTK softw
 sudo apt-get install gconf-editor -y # used to set the app which use the gtk library, such as iptux
 sudo apt-get install gstreamer1.0-libde265 -y # H265 Video play
 
+#fix gedit unreadable code
+gsettings set org.gnome.gedit.preferences.encodings auto-detected "['GB18030', 'GB2312', 'GBK', 'UTF-8', 'BIG5', 'CURRENT', 'UTF-16']"
+gsettings set org.gnome.gedit.preferences.encodings shown-in-menu "['GB18030', 'GB2312', 'GBK', 'UTF-8', 'BIG5', 'CURRENT', 'UTF-16']"
+
 echo "13. Install Beyond compare"
 # replace ia32-libs
 sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0 -y
