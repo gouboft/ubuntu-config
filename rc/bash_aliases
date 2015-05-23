@@ -57,7 +57,7 @@ alias sc='scribes'
 # set my environment
 export d=~/Desktop
 export D=~/Downloads
-hash -d d="/home/bo/Desktop"
+hash -d d="~/Desktop"
 hash -d D="~/Downloads"
 
 # Add toolchain for compile
@@ -97,10 +97,19 @@ alias cl9='cl ../../../../../../../../..'
 alias senv='. build/envsetup.sh; lunch'
 
 #set java environment
-export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_30
-export JRE_HOME=/usr/lib/jvm/jdk1.6.0_30
-export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
-export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+function java6 {
+	export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_30
+	export JRE_HOME=/usr/lib/jvm/jdk1.6.0_30
+	export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+	export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+}
+
+function java7 {
+	export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_02
+	export JRE_HOME=/usr/lib/jvm/jdk1.7.0_02
+	export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+	export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+}
 
 alias zhcon='zhcon --utf8 --drv=vga'
 
@@ -166,3 +175,4 @@ function cdtools {
         echo $CF_FILE_ERR
     done
 }
+

@@ -4,13 +4,14 @@ ROCKCHIP_DIR=~/Source/rockchip
 
 # Kernel Dir
 KERNEL_ALLWINNER_DIR=vendor/softwinner/linux-3.*
-KERNEL_ROCKCHIP_DIR=kernel
+KERNEL_ROCKCHIP_DIR=kernel*
 KERNEL_DRIVERS_ALLWINNER_DIR=$KERNEL_ALLWINNER_DIR/drivers
-KERNEL_DRIVERS_ROCKCHIP_DIR=$KERNEL_INFOTM_DIR/drivers
+KERNEL_DRIVERS_ROCKCHIP_DIR=$KERNEL_ROCKCHIP_DIR/drivers
 
 # Allwinner
 AUDIO_DIR=device/softwinner/common/hardware/audio
 TOOLS_DIR=vendor/softwinner/tools/pack/chips/*/configs
+TOOLS_VENDOR_DIR=vendor/softwinner
 TOOLS_PACK_DIR=vendor/softwinner/tools/pack
 
 ##########################################################
@@ -20,8 +21,8 @@ alias cr='cd $ROCKCHIP_DIR'
 alias sen='. build/envsetup.sh; AT=$(pwd)'
 alias a='cd $AT'
 alias ao='cd $OUT'
-alias ad='if [ -d $AT/device/infotm ]; then cd $AT/device/infotm; else cd $AT/device/softwinner; fi'
-alias adt='if [ -d $AT/device/infotm ]; then cd $AT/device/*/$TARGET_PRODUCT; else cd $DEVICE; fi' # only take effect After execute lunch
+alias ad='if [ -d $AT/device/rockchip ]; then cd $AT/device/rockchip; elif [ -d $AT/device/mediatek ]; then cd $AT/device/mediatek; else cd $AT/device/softwinner; fi'
+alias adt='if [ -d $AT/device/rockchip ]; then cd $AT/device/*/$TARGET_PRODUCT; else cd $DEVICE; fi' # only take effect After execute lunch
 alias k='if [ -d $AT/$KERNEL_ALLWINNER_DIR ]; then cd $AT/$KERNEL_ALLWINNER_DIR; else cd $AT/$KERNEL_ROCKCHIP_DIR; fi'
 alias kd='if [ -d $AT/$KERNEL_DRIVERS_ALLWINNER_DIR ]; then cd $AT/$KERNEL_DRIVERS_ALLWINNER_DIR; else cd $AT/$KERNEL_DRIVERS_ROCKCHIP_DIR; fi'
 
@@ -32,6 +33,7 @@ alias am='cd $AT/.repo/manifests'
 # Allwinner
 alias aa='cd $AT/$AUDIO_DIR'
 alias at='cd $AT/$TOOLS_DIR'
+alias av='cd $AT/$TOOLS_VENDOR_DIR'
 alias atp='cd $AT/$TOOLS_PACK_DIR'
 
 
@@ -42,6 +44,9 @@ export PATH=/opt/toolchain/bin:$PATH
 export PATH=~/android/android-studio/bin:$PATH
 
 #android ndk
-#export PATH=~/android/android-ndk-r9d:$PATH
-#export NDK_ROOT=~/android/android-ndk-r9d
-
+function cocos2d-x_env {
+	export PATH=~/android/android-ndk-r9d:$PATH
+	export NDK_ROOT=~/android/android-ndk-r9d
+	export ANDROID_SDK_ROOT=~/android/adt-bundle-linux-x86_64/sdk
+	export ANT_ROOT=~/android/apache-ant-1.9.4/bin
+}
