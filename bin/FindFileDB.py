@@ -15,7 +15,7 @@ def GenerateDB(display, path):
             GenerateDB(display, path)
         else:
             FilePath = os.path.realpath(File)
-            FileName = os.path.split(File)[1])
+            FileName = os.path.split(File[1])
             if (os.path.isfile(FilePath)):
                 with open(DataBaseFileName, mode='a', encoding='utf-8') as DBFile:
                     content = FileName  + ' : ' + FilePath
@@ -30,7 +30,7 @@ def FindFile(File):
             line_list = line.split(' : ')
             if(File == line_list[0]):
                 LineNumber += 1
-                print(str(LineNumber) + " " + line_list[1].)
+                print(str(LineNumber) + " " + line_list[1])
 
 def main():
     usage = "usage: %prog filename\n" +\
